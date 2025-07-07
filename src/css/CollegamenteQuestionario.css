@@ -1,0 +1,45 @@
+.collegamento-questionario {
+  background-color: #ddffd9;
+  padding: 4em;
+}
+
+.collegamento-questionario h1 {
+  font-size: 55px;
+}
+
+.collegamento-questionario p {
+  padding: 1em 0;
+  width: 85%;
+}
+
+.phone-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+}
+.inizia-da-te {
+  width: 80%;
+}
+.inizia-da-te-testo {
+  text-align: center;
+}
+.contenitore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  /* md e down */
+  .phone-col {
+    align-items: center !important;
+    margin-bottom: 5em;
+  }
+  .phone {
+    width: 80%;
+  }
+
+  .inizia-da-te {
+    width: 100%;
+  }
+}

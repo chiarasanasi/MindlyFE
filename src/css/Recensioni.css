@@ -1,0 +1,39 @@
+/* RecensioniMockup.css */
+
+.scroll-container {
+  scroll-behavior: smooth;
+  cursor: grab;
+  user-select: none;
+}
+
+.scroll-container:active {
+  cursor: grabbing;
+}
+
+.min-card {
+  min-width: 280px;
+  max-width: 320px;
+  border: none;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  transition: transform 0.2s ease-in-out;
+  position: relative !important;
+}
+
+.min-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stars {
+  font-size: 1.2rem;
+  color: #00b67a; /* Trustpilot green */
+  letter-spacing: 1px;
+}
+
+/* Responsive fallback */
+@media (max-width: 576px) {
+  .min-card {
+    min-width: 90%;
+  }
+}

@@ -1,0 +1,10 @@
+.navbar-custom {
+  background-color: rgba(255, 255, 255, 0.7); /* parte trasparente */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: saturate(180%) blur(10px); /* effetto vetro satinato */
+}
+
+.logo {
+  width: 200px;
+  margin-bottom: 2rem;
+}

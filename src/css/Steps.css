@@ -1,0 +1,80 @@
+.circle-step {
+  position: relative;
+  width: 180px; /* o la larghezza del tuo circle.svg */
+}
+
+.circle-step-img {
+  height: auto;
+  display: block;
+}
+
+.circle-step-p {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 21pt;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.card-step {
+  width: 18em;
+  padding: 1em;
+  background-color: rgba(217, 255, 214, 0.5) !important;
+  backdrop-filter: saturate(180%) blur(10px) !important;
+  position: absolute !important;
+  top: 30%;
+  border: 3px solid rgba(201, 255, 197, 0.8) !important;
+  height: 23em !important;
+}
+
+.titolo-card {
+  color: #025f44 !important;
+  font-weight: 700 !important;
+  font-size: x-large !important;
+}
+
+.icon {
+  color: #025f44;
+  padding: 1.5em;
+  margin-bottom: 1em;
+  border-radius: 100%;
+  background-color: rgb(240, 254, 238);
+  box-shadow: -1px 11px 16px -4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 11px 16px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 11px 16px -4px rgba(0, 0, 0, 0.75);
+}
+
+.step-wrapper {
+  position: relative;
+  height: 220px; /* o quanto ti serve per contenere bene cerchio + card */
+  margin: 0 3rem; /* spazio tra le righe di card */
+  display: flex;
+  justify-content: center;
+}
+
+.margine {
+  margin-bottom: 300px;
+}
+
+@media (max-width: 991.98px) {
+  /* md e down */
+  .step-wrapper {
+    height: 220px;
+    margin-bottom: 13rem;
+  }
+
+  .margine {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  /* sm e down */
+  .step-wrapper {
+    height: 220px;
+    margin-bottom: 13rem;
+  }
+}

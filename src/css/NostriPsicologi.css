@@ -1,0 +1,26 @@
+.preview-section {
+  background-color: #fffed6;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.preview-text h2 {
+  color: rgb(2, 95, 68);
+  max-width: 400px;
+}
+
+.preview-foto-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  max-width: 400px;
+}
+
+.preview-foto {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
