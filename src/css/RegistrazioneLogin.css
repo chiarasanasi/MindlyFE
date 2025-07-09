@@ -1,0 +1,52 @@
+.sfondo {
+  background: url("/img/sfondoQuestionario.jpg") center/cover no-repeat;
+  position: relative; /* necessario per il ::before */
+  min-height: 100vh;
+}
+
+/* crea il velo */
+.sfondo::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* occupa tutta la sfondo */
+  background: rgba(226, 255, 227, 0.85); /* trasparenza gestibile */
+  z-index: 0;
+}
+
+.background-overlay {
+  position: relative;
+  z-index: 1;
+  background: none;
+}
+
+.background-overlay-registrazione {
+  position: absolute;
+  z-index: 1;
+  background: none;
+}
+
+.spazio-dalla-navbar {
+  margin-top: 6em;
+}
+
+.spazio-dalla-navbar-form {
+  margin-top: 0;
+}
+
+.cambioflex {
+  flex-direction: column;
+}
+
+.form-control {
+  font-size: small;
+}
+
+.form-control::placeholder {
+  font-size: 0.8rem !important;
+}
+
+@media (min-width: 990px) {
+  .spazio-dalla-navbar-form {
+    margin-top: 5em;
+  }
+}

@@ -15,6 +15,10 @@ body {
   color: #000;
 }
 
+.h-verde {
+  color: #025f44;
+}
+
 /* BUTTONS */
 .button-green {
   background-color: #025f44;
@@ -40,4 +44,13 @@ body {
   border: 1px solid #025f44;
   box-shadow: none;
   outline: none;
+}
+
+.campo-form {
+  border-radius: 1em !important;
+}
+
+/* SPAZIO DALLA NAV BAR */
+.spazio-dalla-navbar {
+  margin-top: 6em !important;
 }

@@ -51,8 +51,8 @@ const NavBarMenu = () => {
               </NavDropdown>
               <Nav.Link href="#servizi">Servizi</Nav.Link>
               <Nav.Link href="#psicologi">Psicologi</Nav.Link>
-              <Nav.Link href="#questionario">
-                <button className="button-green">QUESTIONARIO</button>
+              <Nav.Link href="/registrazione-o-login">
+                <button className="button-green">LOGIN</button>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

@@ -1,5 +1,6 @@
 import "/src/css/Mindly.css"
 import "/src/css/Header.css"
+import { Link } from "react-router-dom"
 
 const Header = () => {
   return (
@@ -13,7 +14,9 @@ const Header = () => {
           che ti blocca e ritrova il tuo equilibrio. La salute mentale è
           importante. Inizia da te.
         </p>
-        <button className="button-green mt-3">PRENDI IL PRIMO PASSO</button>
+        <Link to="/questionario">
+          <button className="button-green mt-3">PRENDI IL PRIMO PASSO</button>
+        </Link>
       </div>
       <div className="image-section">
         <img src="/img/foto1.jpg" alt="Foto ispirazionale" />

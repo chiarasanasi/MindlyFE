@@ -78,7 +78,7 @@ const stepsData = [
 
 const Steps = () => {
   return (
-    <div className="d-flex flex-wrap justify-content-center gap-4 py-5">
+    <div className="d-flex flex-wrap justify-content-center gap-4 py-3">
       <Row className="g-4 margine">
         {stepsData.map((step, index) => (
           <Col key={index} xs={12} md={6} lg={3}>

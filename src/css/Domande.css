@@ -1,0 +1,23 @@
+.questionario-sfondo {
+  min-height: 100vh;
+  background-image: url("/public/img/sfondoQuestionario.jpg"); /* o .jpg, .svg, ecc. */
+  background-size: cover; /* adatta l'immagine a coprire tutta la pagina */
+  background-position: center; /* centra l'immagine */
+  background-repeat: no-repeat; /* evita la ripetizione */
+  display: flex;
+  flex-direction: column;
+}
+
+.background-overlay-questionario {
+  position: absolute;
+  inset: 0; /* equivale a top: 0; right: 0; bottom: 0; left: 0; */
+  background-color: rgba(226, 255, 227, 0.821); /* bianco con trasparenza 60% */
+  z-index: 0;
+}
+.domanda {
+  color: green;
+}
+
+.descrizione {
+  color: rgb(126, 126, 126);
+}
