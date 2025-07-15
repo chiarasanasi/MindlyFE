@@ -15,7 +15,7 @@
 .phone-col {
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-end !important;
+  align-items: flex-center !important;
 }
 .inizia-da-te {
   width: 80%;
@@ -28,15 +28,15 @@
   flex-direction: column;
   align-items: center;
 }
+.phone {
+  width: 35%;
+}
 
 @media (max-width: 768px) {
   /* md e down */
   .phone-col {
     align-items: center !important;
     margin-bottom: 5em;
-  }
-  .phone {
-    width: 80%;
   }
 
   .inizia-da-te {

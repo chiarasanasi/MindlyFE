@@ -25,6 +25,7 @@ const CollegamentoQuestionario = () => {
                 semplice, gratuito e ti apre la strada verso un percorso pensato
                 su misura per te.
               </p>
+              <button className="button-green"> VAI AL QUESTIONARIO !</button>
             </div>
           </Col>
         </Row>

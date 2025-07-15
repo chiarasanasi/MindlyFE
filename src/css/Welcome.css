@@ -1,0 +1,9 @@
+.banner {
+  background-color: rgb(244, 255, 246);
+  border: 2px solid rgb(209, 255, 218);
+  border-radius: 1em;
+}
+
+.marginenavbar {
+  margin-top: 8em;
+}

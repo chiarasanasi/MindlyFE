@@ -97,7 +97,7 @@ const Steps = () => {
                 </div>
                 <Card className="card-step text-center">
                   <Card.Body className="d-flex flex-column align-items-center">
-                    <div className="icon mb-3">{step.icon}</div>
+                    <div className="icon-step mb-3">{step.icon}</div>
                     <Card.Title className="titolo-card">
                       {step.titolo}
                     </Card.Title>

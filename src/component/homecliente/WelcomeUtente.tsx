@@ -1,0 +1,24 @@
+import { Container, Row } from "react-bootstrap"
+import "/src/css/Mindly.css"
+import "/src/css/Welcome.css"
+
+type Props = {
+  cliente: any
+}
+
+const WelcomeUtente = ({ cliente }: Props) => {
+  if (!cliente) return null
+
+  return (
+    <>
+      <div className="text-center marginenavbar banner">
+        <p className="p-3 h-verde">Ciao, {cliente.nome}, come stai?</p>
+        <h3 className="pb-4 h-verde">
+          Meriti del tempo per te. Inizia da oggi.
+        </h3>
+      </div>
+    </>
+  )
+}
+
+export default WelcomeUtente

@@ -54,3 +54,9 @@ body {
 .spazio-dalla-navbar {
   margin-top: 6em !important;
 }
+
+/* LINK */
+.linkcollegamento {
+  text-decoration: none;
+  color: #9ec197;
+}

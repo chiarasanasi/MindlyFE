@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Row, Col, Form, Modal, Button } from "react-bootstrap"
+import { Row, Col, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import "/src/css/Mindly.css"
 import "/src/css/RegistrazioneLogin.css"
@@ -31,7 +31,10 @@ const Login = () => {
       const token = await res.text()
       localStorage.setItem("token", token)
 
-      const ruolo = parseJwt(token).ruolo
+      const decodedToken = parseJwt(token)
+      console.log("Dati nel token:", decodedToken)
+      const ruoloArray = decodedToken.ruolo
+      const ruolo = Array.isArray(ruoloArray) ? ruoloArray[0] : ruoloArray
       localStorage.setItem("ruolo", ruolo)
 
       const nomeUtente = formData.username
@@ -44,6 +47,16 @@ const Login = () => {
       }
 
       console.log("Login avvenuto con successo. Benvenut* " + formData.username)
+
+      const resUtente = await fetch("http://localhost:8080/cliente/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      if (resUtente.ok) {
+        const utente = await resUtente.json()
+        localStorage.setItem("utente", JSON.stringify(utente))
+      }
     } catch (err) {
       console.error("Errore:", err)
     }
