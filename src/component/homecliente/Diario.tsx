@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import NavBarClientePsico from "../NavbarClientePsico"
 import SidebarCliente from "./SidebarCliente"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Card, Button, Form } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/Diario.css"
 
@@ -109,77 +109,91 @@ const Diario = () => {
     <>
       <NavBarClientePsico />
       <SidebarCliente cliente={cliente} />
-      <Container className="mt-4">
-        <Row className="justify-content-center">
-          <Col lg={10}>
-            <h3 className="mb-4">Il mio diario</h3>
-
-            <textarea
-              className="form-control mb-2"
+      <Container className="mt-4 mb-5">
+        <Row className="justify-content-center mb-4 spazio-dalla-navbar">
+          <Col lg={12}>
+            <h4 className="mb-3 h-verde">Ciao {cliente.nome}, come stai?</h4>
+            <Form.Control
+              as="textarea"
               rows={3}
+              className="mb-2"
+              placeholder="Scrivi qualcosa..."
               value={nuovaNota}
               onChange={(e) => setNuovaNota(e.target.value)}
-              placeholder="Scrivi una nuova nota..."
             />
-            <button className="btn btn-success mb-4" onClick={salvaNota}>
-              Salva nota
-            </button>
-
-            <ul className="list-group">
-              {note.map((nota) => (
-                <li key={nota.id} className="list-group-item mb-3">
-                  <div className="d-flex justify-content-between align-items-start">
-                    <div className="w-100">
-                      <small className="text-muted d-block mb-1">
-                        {new Date(nota.dataCreazione).toLocaleString()}
-                      </small>
-                      {editNoteId === nota.id ? (
-                        <>
-                          <textarea
-                            className="form-control mb-2"
-                            rows={3}
-                            value={editContenuto}
-                            onChange={(e) => setEditContenuto(e.target.value)}
-                          />
-                          <button
-                            className="btn btn-primary btn-sm me-2"
-                            onClick={() => aggiornaNota(nota.id)}
-                          >
-                            Salva modifiche
-                          </button>
-                          <button
-                            className="btn btn-secondary btn-sm"
-                            onClick={() => setEditNoteId(null)}
-                          >
-                            Annulla
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <p className="mb-2">{nota.contenuto}</p>
-                          <button
-                            className="btn btn-outline-primary btn-sm me-2"
-                            onClick={() => {
-                              setEditNoteId(nota.id)
-                              setEditContenuto(nota.contenuto)
-                            }}
-                          >
-                            Modifica
-                          </button>
-                          <button
-                            className="btn btn-outline-danger btn-sm"
-                            onClick={() => eliminaNota(nota.id)}
-                          >
-                            Elimina
-                          </button>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <div className="text-end">
+              <button
+                disabled={nuovaNota.trim() === ""}
+                onClick={salvaNota}
+                className="button-green"
+              >
+                SALVA NOTA
+              </button>
+            </div>
           </Col>
+        </Row>
+
+        <Row xs={1} md={2} lg={2} className="g-4">
+          {note.map((nota) => (
+            <Col key={nota.id}>
+              <Card className="shadow-sm h-100">
+                <Card.Body>
+                  <small className="text-muted card-diario">
+                    {new Date(nota.dataCreazione).toLocaleString()}
+                  </small>
+
+                  {editNoteId === nota.id ? (
+                    <>
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        className="my-3"
+                        value={editContenuto}
+                        onChange={(e) => setEditContenuto(e.target.value)}
+                      />
+                      <div className="d-flex justify-content-end">
+                        <button
+                          className="me-2 button-outline-green"
+                          onClick={() => aggiornaNota(nota.id)}
+                        >
+                          Salva
+                        </button>
+                        <button
+                          onClick={() => setEditNoteId(null)}
+                          className="me-2 button-outline-green"
+                        >
+                          Annulla
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <Card.Text className="mt-2 mb-3">
+                        {nota.contenuto}
+                      </Card.Text>
+                      <div className="d-flex justify-content-end">
+                        <button
+                          className="button-outline-green"
+                          onClick={() => {
+                            setEditNoteId(nota.id)
+                            setEditContenuto(nota.contenuto)
+                          }}
+                        >
+                          Modifica
+                        </button>
+                        <button
+                          onClick={() => eliminaNota(nota.id)}
+                          className="button-outline-green mx-3"
+                        >
+                          Elimina
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
         </Row>
       </Container>
 
@@ -202,12 +216,12 @@ const Diario = () => {
                 </p>
               </div>
               <div className="modal-footer">
-                <button
+                <Button
                   className="btn btn-primary"
                   onClick={() => navigate("/login")}
                 >
                   Vai al login ora
-                </button>
+                </Button>
               </div>
             </div>
           </div>

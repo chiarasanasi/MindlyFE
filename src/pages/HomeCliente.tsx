@@ -10,6 +10,8 @@ import { Link } from "react-router-dom"
 import { jwtDecode } from "jwt-decode"
 import "/src/css/Mindly.css"
 import "/src/css/Calendario.css"
+import CalendarioCliente from "./CalendarioCliente"
+import fetchTokenScaduto from "..utilities/fetchTokenScaduto"
 
 const HomeCliente = () => {
   interface DecodedToken {
@@ -35,34 +37,31 @@ const HomeCliente = () => {
 
     const fetchCliente = async () => {
       try {
-        const res = await fetch("http://localhost:8080/cliente/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-
-        if (!res.ok) throw new Error("Errore nel recupero cliente")
-
+        const res = await fetchTokenScaduto(
+          "http://localhost:8080/cliente/me",
+          {},
+          () => setShowModal(true)
+        )
         const data = await res.json()
         setCliente(data)
-        console.log("DATI DEL CLIENTE", data)
       } catch (err) {
         console.error("Errore cliente:", err)
-        setShowModal(true)
-        setTimeout(() => navigate("/login"), 3000)
       } finally {
         setLoading(false)
       }
     }
+
     const fetchNote = async () => {
-      const res = await fetch("http://localhost:8080/note", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      if (res.ok) {
-        const data = await res.json()
-        setNote(data)
+      try {
+        const res = await fetchWithAuth("http://localhost:8080/note", {}, () =>
+          setShowModal(true)
+        )
+        if (res.ok) {
+          const data = await res.json()
+          setNote(data)
+        }
+      } catch (err) {
+        console.error("Errore note:", err)
       }
     }
 

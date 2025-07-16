@@ -10,8 +10,8 @@ import HomeCliente from "./pages/HomeCliente"
 import HomePsicologo from "./pages/HomePsicologo"
 import QuestionarioRegistrazione from "./pages/QuestionarioRegistrazione"
 import Diario from "./component/homecliente/Diario"
-import Calendario from "./component/homecliente/Calendario"
 import CalendarioCliente from "./pages/CalendarioCliente"
+import Psicologo from "./component/homecliente/Psicologo"
 
 const App = () => {
   return (
@@ -30,7 +30,6 @@ const App = () => {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/registrazione" element={<Registrazione />} />
-
           <Route path="/cliente/:username/home" element={<HomeCliente />} />
           <Route path="/psicologo/:username/home" element={<HomePsicologo />} />
           <Route path="/cliente/:username/diario" element={<Diario />} />
@@ -38,6 +37,7 @@ const App = () => {
             path="/cliente/:username/calendario"
             element={<CalendarioCliente />}
           />
+          <Route path="/cliente/:username/psicologo" element={<Psicologo />} />
         </Routes>
       </Router>
     </>

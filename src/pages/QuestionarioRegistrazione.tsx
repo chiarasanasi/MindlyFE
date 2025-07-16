@@ -17,8 +17,20 @@ const QuestionarioRegistrazione = () => {
     ruolo: "CLIENTE",
   })
 
+  const [errore, setErrore] = useState<string>("")
+  const campoNonValido = (valore: string) => valore.trim() === ""
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setErrore("") // resetta eventuale errore precedente
+
+    // validazione frontend
+    const { nome, cognome, email, username, password } = formData
+    if (!nome || !cognome || !email || !username || !password) {
+      setErrore("Per favore, compila tutti i campi obbligatori.")
+      return
+    }
+
     const body: any = { ...formData }
 
     const risposte = localStorage.getItem("risposteQuestionario")
@@ -31,11 +43,17 @@ const QuestionarioRegistrazione = () => {
         body: JSON.stringify(body),
       })
 
-      if (!res.ok) throw new Error("Errore nella registrazione")
+      if (!res.ok) {
+        const errorJson = await res.json()
+        setErrore(errorJson.message || "Errore nella registrazione.")
+        return
+      }
+
       console.log("Registrazione avvenuta con successo")
       navigate("/login")
     } catch (err) {
       console.error("Errore:", err)
+      setErrore("Errore di connessione al server. Riprova.")
     }
   }
 
@@ -98,6 +116,9 @@ const QuestionarioRegistrazione = () => {
                           onChange={(e) =>
                             setFormData({ ...formData, nome: e.target.value })
                           }
+                          isInvalid={
+                            campoNonValido(formData.nome) && errore !== ""
+                          }
                         />
                       </Form.Group>
 
@@ -113,6 +134,9 @@ const QuestionarioRegistrazione = () => {
                               cognome: e.target.value,
                             })
                           }
+                          isInvalid={
+                            campoNonValido(formData.cognome) && errore !== ""
+                          }
                         />
                       </Form.Group>
 
@@ -124,6 +148,9 @@ const QuestionarioRegistrazione = () => {
                           value={formData.email}
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
+                          }
+                          isInvalid={
+                            campoNonValido(formData.email) && errore !== ""
                           }
                         />
                       </Form.Group>
@@ -139,6 +166,9 @@ const QuestionarioRegistrazione = () => {
                               ...formData,
                               username: e.target.value,
                             })
+                          }
+                          isInvalid={
+                            campoNonValido(formData.username) && errore !== ""
                           }
                         />
                       </Form.Group>
@@ -157,8 +187,19 @@ const QuestionarioRegistrazione = () => {
                               password: e.target.value,
                             })
                           }
+                          isInvalid={
+                            campoNonValido(formData.password) && errore !== ""
+                          }
                         />
                       </Form.Group>
+                      {errore && (
+                        <p
+                          className="text-danger text-center mt-3"
+                          role="alert"
+                        >
+                          {errore}
+                        </p>
+                      )}
 
                       <div className="text-center">
                         <button className="button-green mt-3" type="submit">

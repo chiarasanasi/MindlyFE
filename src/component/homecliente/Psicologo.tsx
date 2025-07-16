@@ -1,0 +1,78 @@
+import "/src/css/Mindly.css"
+import "/src/css/Psicologo.css"
+import { useEffect, useState } from "react"
+import { Container, Card, Row, Col, Badge } from "react-bootstrap"
+import NavBarClientePsico from "../NavbarClientePsico"
+import SidebarCliente from "./SidebarCliente"
+
+const Psicologo = () => {
+  const [psicologo, setPsicologo] = useState<any>(null)
+  const [cliente, setCliente] = useState<any>(null)
+
+  useEffect(() => {
+    const utente = localStorage.getItem("utente")
+    if (utente) {
+      const parsed = JSON.parse(utente)
+      setPsicologo(parsed.psicologo)
+      setCliente(parsed)
+    }
+  }, [])
+
+  if (!psicologo) {
+    return (
+      <div className="text-center mt-5">
+        <p>Caricamento informazioni dello psicologo...</p>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <NavBarClientePsico />
+      <SidebarCliente cliente={cliente} />
+
+      <Container className="d-flex justify-content-center align-items-center pt-5 spazio-dalla-navbar">
+        <Card
+          className="shadow p-4"
+          style={{
+            maxWidth: "600px",
+            width: "100%",
+            backgroundColor: "#e9fef1",
+          }}
+        >
+          <Row className="align-items-center">
+            <Col xs={12} md={4} className="text-center mb-3">
+              <img
+                src={psicologo.immagineProfilo}
+                alt={psicologo.nome}
+                className="img-fluid rounded-circle"
+                style={{ width: "100px", height: "100px", objectFit: "cover" }}
+              />
+            </Col>
+            <Col xs={12} md={8}>
+              <h4 className="fw-bold mb-1">
+                {psicologo.nome} {psicologo.cognome}
+              </h4>
+              <p className="mb-1 text-muted">{psicologo.email}</p>
+              <p className="mb-1">Età: {psicologo.eta}</p>
+              <p className="mb-1">Genere: {psicologo.genere}</p>
+              <p className="mb-1">
+                Specializzazione: <strong>{psicologo.specializzazione}</strong>
+              </p>
+              <p> {psicologo.descrizione}</p>
+              <div className="mt-2">
+                {psicologo.tagList?.map((tag: string, index: number) => (
+                  <Badge key={index} bg="success" className="me-1">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </Col>
+          </Row>
+        </Card>
+      </Container>
+    </>
+  )
+}
+
+export default Psicologo

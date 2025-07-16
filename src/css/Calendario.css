@@ -1,5 +1,39 @@
 #calendar {
   width: 100%;
-  height: 400px;
+  height: 800px;
   max-height: 90vh;
+}
+
+/* Cambia colore intestazione */
+.sx__header {
+  background-color: #e3fcef !important;
+  color: #2e7d32 !important;
+}
+
+/* Colore giorno selezionato */
+.sx__day-cell--selected {
+  background-color: #c8e6c9 !important;
+}
+
+/* Colore degli eventi */
+.sx__event {
+  background-color: #79c36a !important;
+  color: whitesmoke !important;
+  border-radius: 8px !important;
+  padding: 4px 8px;
+  color: white;
+  font-weight: 500;
+}
+
+/* Cambia font ovunque */
+.sx__root {
+  font-family: "Poppins", sans-serif;
+}
+
+.sx__month-agenda-day--active {
+  box-shadow: inset 0 0 0 3px #81c784;
+}
+
+.sx__month-agenda-day__event-icon {
+  background-color: rgb(19, 121, 19) !important;
 }

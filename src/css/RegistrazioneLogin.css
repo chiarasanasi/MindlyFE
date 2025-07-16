@@ -50,3 +50,12 @@
     margin-top: 5em;
   }
 }
+
+[role="alert"] {
+  font-weight: 500;
+  font-size: 1rem;
+}
+.form-control.is-invalid {
+  border-color: #dc3545 !important;
+  box-shadow: none;
+}

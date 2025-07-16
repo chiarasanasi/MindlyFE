@@ -43,7 +43,7 @@ const NavBarMenu = () => {
                 <NavDropdown.Item
                   as={HashLink}
                   smooth
-                  to="/#psicologi"
+                  to="/#i-nostri-psicologi"
                   className="small-text"
                 >
                   I nostri psicologi

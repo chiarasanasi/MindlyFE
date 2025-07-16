@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/CollegamenteQuestionario.css"
+import { Link } from "react-router-dom"
 
 const CollegamentoQuestionario = () => {
   return (
@@ -25,7 +26,14 @@ const CollegamentoQuestionario = () => {
                 semplice, gratuito e ti apre la strada verso un percorso pensato
                 su misura per te.
               </p>
-              <button className="button-green"> VAI AL QUESTIONARIO !</button>
+              <button className="button-green">
+                <Link
+                  to="/questionario"
+                  className="text-decoration-none text-white"
+                >
+                  VAI AL QUESTIONARIO !
+                </Link>
+              </button>
             </div>
           </Col>
         </Row>

@@ -15,7 +15,7 @@
 .phone-col {
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-center !important;
+  align-items: flex-end !important;
 }
 .inizia-da-te {
   width: 80%;

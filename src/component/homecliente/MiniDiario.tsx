@@ -51,8 +51,11 @@ const MiniDiario = () => {
       )}
 
       <div className="mini-diario-footer">
-        <Link to={`/cliente/${username}/diario`} className="mini-diario-link">
-          Vai al diario
+        <Link
+          to={`/cliente/${username}/diario`}
+          className="button-green text-decoration-none"
+        >
+          VAI AL DIARIO
         </Link>
       </div>
     </div>

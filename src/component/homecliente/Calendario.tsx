@@ -3,47 +3,17 @@ import { useCalendarApp, ScheduleXCalendar } from "@schedule-x/react"
 import { createViewMonthAgenda } from "@schedule-x/calendar"
 import { createEventsServicePlugin } from "@schedule-x/events-service"
 import "@schedule-x/theme-default/dist/index.css"
+import "/src/css/Calendario.css"
 import { Alert, Button, Card, Col, Container, Form, Row } from "react-bootstrap"
 import { useLocation } from "react-router-dom"
 import { createEventModalPlugin } from "@schedule-x/event-modal"
-import EventModalCompleto from "./EventModalCompleto"
 
 const Calendario = () => {
-  const location = useLocation()
-  const isClienteCalendario =
-    location.pathname.includes("/cliente/") &&
-    location.pathname.includes("/calendario")
-
-  // const [eventi, setEventi] = useState<any[]>([])
-  // const [caricati, setCaricati] = useState(false)
-
   const eventsService = createEventsServicePlugin()
-
   const eventModal = createEventModalPlugin()
-
-  const customComponents = {
-    eventModal: ({ calendarEvent }) => {
-      return (
-        <div
-          style={{
-            padding: "40px",
-            background: "yellow",
-            color: "black",
-            borderRadius: "24px",
-            border: "1px solid black",
-            fontSize: "24px",
-            fontWeight: "bold",
-          }}
-        >
-          {calendarEvent.title}
-        </div>
-      )
-    },
-  }
 
   const calendar = useCalendarApp({
     views: [createViewMonthAgenda()],
-    // events: eventi,
     plugins: [eventsService, eventModal, createEventModalPlugin],
   })
 
@@ -78,28 +48,8 @@ const Calendario = () => {
     }
   }
 
-  const [richieste, setRichieste] = useState<RichiestaAppuntamento[]>([])
-
-  const richiesteInAttesa = richieste.filter((r) => r.stato === "IN_ATTESA")
-
-  const caricaRichieste = async () => {
-    const token = localStorage.getItem("token")
-    const res = await fetch(
-      "http://localhost:8080/richieste-appuntamento/cliente",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-    if (res.ok) {
-      const data = await res.json()
-      setRichieste(data)
-    }
-  }
-
   useEffect(() => {
-    caricaEventi(), caricaRichieste()
+    caricaEventi()
   }, [])
 
   // ===================== FORM PER LA RICHIESTA =====================
@@ -141,91 +91,9 @@ const Calendario = () => {
 
   return (
     <div>
-      {isClienteCalendario && (
-        <>
-          <h3 className="text-center">Calendario</h3>
-        </>
-      )}
       <div className="my-3">
         <ScheduleXCalendar calendarApp={calendar} />
       </div>
-
-      {isClienteCalendario && (
-        <>
-          <Row>
-            <Col>
-              <hr />
-              <h4>Richiedi un appuntamento</h4>
-
-              {successo && (
-                <Alert variant="success">Richiesta inviata con successo!</Alert>
-              )}
-              {errore && (
-                <Alert variant="danger">Errore durante l'invio. Riprova.</Alert>
-              )}
-
-              <Form onSubmit={inviaRichiesta}>
-                <Row>
-                  <Col md={4}>
-                    <Form.Group>
-                      <Form.Label>Data</Form.Label>
-                      <Form.Control
-                        type="date"
-                        value={data}
-                        onChange={(e) => setData(e.target.value)}
-                        required
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={4}>
-                    <Form.Group>
-                      <Form.Label>Ora</Form.Label>
-                      <Form.Control
-                        type="time"
-                        value={ora}
-                        onChange={(e) => setOra(e.target.value)}
-                        required
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={4}>
-                    <Form.Group>
-                      <Form.Label>Messaggio</Form.Label>
-                      <Form.Control
-                        as="textarea"
-                        rows={1}
-                        value={messaggio}
-                        onChange={(e) => setMessaggio(e.target.value)}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Button className="mt-3" type="submit">
-                  Invia richiesta
-                </Button>
-              </Form>
-            </Col>
-            <Col>
-              <h4>Richieste in attesa</h4>
-              {richiesteInAttesa.length === 0 ? (
-                <p>Nessuna richiesta in attesa.</p>
-              ) : (
-                richiesteInAttesa.map((r) => (
-                  <Card key={r.id} className="mb-2">
-                    <Card.Body>
-                      <strong>Data:</strong> {r.data} — <strong>Ora:</strong>{" "}
-                      {r.ora}
-                      <br />
-                      <strong>Messaggio:</strong>{" "}
-                      {r.messaggio || "Nessun messaggio"}
-                    </Card.Body>
-                  </Card>
-                ))
-              )}
-            </Col>
-          </Row>
-        </>
-      )}
     </div>
   )
 }

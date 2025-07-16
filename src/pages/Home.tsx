@@ -11,16 +11,25 @@ const Home = () => {
   return (
     <>
       <NavBarMenu />
-      <Header />
+      <div id="header">
+        <Header />
+      </div>
+
       <div id="steps">
         <Steps />
       </div>
       <CollegamentoQuestionario />
-      <NostriPsicologi />
+      <div id="i-nostri-psicologi">
+        <NostriPsicologi />
+      </div>
+
       <div id="recensioni">
         <Recensioni />
       </div>
-      <BlogCards />
+      <div id="midly-blog">
+        <BlogCards />
+      </div>
+
       <Footer />
     </>
   )

@@ -21,26 +21,6 @@ const CalendarioCliente = () => {
 
   const eventModal = createEventModalPlugin()
 
-  const customComponents = {
-    eventModal: ({ calendarEvent }) => {
-      return (
-        <div
-          style={{
-            padding: "40px",
-            background: "yellow",
-            color: "black",
-            borderRadius: "24px",
-            border: "1px solid black",
-            fontSize: "24px",
-            fontWeight: "bold",
-          }}
-        >
-          {calendarEvent.title}
-        </div>
-      )
-    },
-  }
-
   const calendar = useCalendarApp({
     views: [createViewMonthAgenda()],
     plugins: [eventsService, eventModal, createEventModalPlugin],
@@ -209,7 +189,7 @@ const CalendarioCliente = () => {
                   </Form>
                 </Col>
                 <Col className="my-lg-0 my-4">
-                  <h4 className="h-verde">Richieste in attesa</h4>
+                  <h4 className="h-verde mb-3">Richieste in attesa</h4>
                   <div style={{ maxHeight: "380px", overflow: "auto" }}>
                     {richiesteInAttesa.length === 0 ? (
                       <p>Nessuna richiesta in attesa.</p>

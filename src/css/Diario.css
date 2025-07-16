@@ -1,0 +1,51 @@
+.card {
+  background-color: #e9fef1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: none;
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease;
+  border: #b7e3c5 2px solid;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background-color: #f6fff9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+.btn-sm {
+  font-weight: 500;
+}
+
+/* Bottoni Modifica ed Elimina */
+.button-outline-green {
+  border: 1px solid #028f63;
+  color: #028f63;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+
+.button-outline-green:hover {
+  background-color: #e6fff2;
+  transform: scale(1.05);
+  color: #025f44;
+}
+
+.button-outline-green:active {
+  background-color: #b8ffaa;
+  color: #025f44;
+  border: 1px solid #025f44;
+  box-shadow: none;
+  outline: none;
+}

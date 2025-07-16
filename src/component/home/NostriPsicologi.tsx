@@ -18,7 +18,12 @@ const NostriPsicologi = () => {
   return (
     <section className="preview-section d-flex align-items-center justify-content-between px-5 py-5">
       <Row className="justify-content-lg-center">
-        <Col lg={4} sm={6} xs={12} className="text-center">
+        <Col
+          lg={4}
+          sm={6}
+          xs={12}
+          className="text-center d-flex align-items-center"
+        >
           <div className="preview-text">
             <h2 className="fw-bold">I NOSTRI PSICOLOGI</h2>
             <p>

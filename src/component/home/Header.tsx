@@ -15,7 +15,7 @@ const Header = () => {
           importante. Inizia da te.
         </p>
         <Link to="/questionario">
-          <button className="button-green mt-3">PRENDI IL PRIMO PASSO</button>
+          <button className="button-green mt-3">FAI IL PRIMO PASSO</button>
         </Link>
       </div>
       <div className="image-section">

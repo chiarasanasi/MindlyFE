@@ -1,6 +1,7 @@
 import "/src/css/Mindly.css"
 import "/src/css/Footer.css"
 import { Container, Row, Col } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const Footer = () => {
   return (
@@ -17,16 +18,16 @@ const Footer = () => {
             <h6 className="fw-bold text-success">Navigazione</h6>
             <ul className="list-unstyled">
               <li>
-                <a href="#">Home</a>
+                <a href="#header">Home</a>
               </li>
               <li>
-                <a href="#">Chi siamo</a>
+                <a href="#steps">Cammina con noi </a>
               </li>
               <li>
-                <a href="#">Blog</a>
+                <a href="#mindly-blog">Blog</a>
               </li>
               <li>
-                <a href="#">Contatti</a>
+                <Link to="/questionario">Questionario</Link>
               </li>
             </ul>
           </Col>

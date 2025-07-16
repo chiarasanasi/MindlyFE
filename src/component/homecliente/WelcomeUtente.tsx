@@ -12,8 +12,8 @@ const WelcomeUtente = ({ cliente }: Props) => {
   return (
     <>
       <div className="text-center marginenavbar banner">
-        <p className="p-3 h-verde">Ciao, {cliente.nome}, come stai?</p>
-        <h3 className="pb-4 h-verde">
+        <p className="p-3 m-0 h-verde">Ciao, {cliente.nome}, come stai?</p>
+        <h3 className="pb-4 m-0 h-verde">
           Meriti del tempo per te. Inizia da oggi.
         </h3>
       </div>

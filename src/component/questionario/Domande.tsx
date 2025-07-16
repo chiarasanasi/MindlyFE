@@ -156,6 +156,7 @@ const domande = [
     tipo: "sceltaMultipla",
     testo:
       "Hai qualche dubbio o pensiero riguardo la possibilità di intraprendere un percorso psicologico?",
+    descrizione: "Puoi selezionare più di una risposta",
     opzioni: [
       "Non so bene cosa aspettarmi",
       "Ho paura che mi si giudichi o fraintenda",
@@ -224,6 +225,7 @@ function Domande() {
   const [indice, setIndice] = useState(0)
   const [risposte, setRisposte] = useState<{ [key: number]: any }>({})
   const [valoreCorrente, setValoreCorrente] = useState<string | string[]>("")
+  const [errore, setErrore] = useState<string>("")
 
   const navigate = useNavigate()
 
@@ -231,8 +233,22 @@ function Domande() {
   const nomeUtente = risposte[1]
 
   const handleProsegui = () => {
+    setErrore("")
+
     if (domanda.tipo === "welcome") {
       setIndice((prev) => prev + 1)
+      return
+    }
+
+    const rispostaObbligatoria =
+      domanda.tipo !== "aperta" || domanda.obbligatoria === true
+
+    const haRisposto =
+      (Array.isArray(valoreCorrente) && valoreCorrente.length > 0) ||
+      (!Array.isArray(valoreCorrente) && valoreCorrente !== "")
+
+    if (rispostaObbligatoria && !haRisposto) {
+      setErrore("Per favore, rispondi alla domanda prima di continuare.")
       return
     }
 
@@ -240,10 +256,11 @@ function Domande() {
       ...risposte,
       [domanda.id]: Array.isArray(valoreCorrente)
         ? valoreCorrente
-        : [valoreCorrente], // trasformo sempre in array
+        : [valoreCorrente],
     }
     setRisposte(nuoveRisposte)
     setValoreCorrente("")
+    setErrore("")
 
     const ultimaDomanda = indice === domande.length - 1
 
@@ -353,6 +370,11 @@ function Domande() {
       <Row className="justify-content-center">
         <Col lg={6} className="mt-lg-5 pt-lg-5">
           {renderDomanda()}
+          {errore && (
+            <p className="text-danger text-center mt-3" role="alert">
+              {errore}
+            </p>
+          )}
           <div className="mt-4 text-center ">
             <button onClick={handleProsegui} className="button-green">
               CONTINUA..
