@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
-import NavDropdown from "react-bootstrap/NavDropdown"
 import { Link } from "react-router-dom"
 import "../css/Mindly.css"
 import "../css/Navbar.css"
@@ -22,35 +21,30 @@ const NavBarMenu = () => {
 
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto d-flex align-items-center">
-              <NavDropdown title="Mindly" id="basic-nav-dropdown">
-                <NavDropdown.Item
-                  as={HashLink}
-                  smooth
-                  to="/#steps"
-                  className="small-text"
-                >
-                  Come Funziona
-                </NavDropdown.Item>
-                <NavDropdown.Item
-                  as={HashLink}
-                  smooth
-                  to="/#recensioni"
-                  className="small-text"
-                >
-                  Recensioni
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item
-                  as={HashLink}
-                  smooth
-                  to="/#i-nostri-psicologi"
-                  className="small-text"
-                >
-                  I nostri psicologi
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link href="#servizi">Servizi</Nav.Link>
-              <Nav.Link href="#psicologi">Psicologi</Nav.Link>
+              <Nav.Link
+                as={HashLink}
+                smooth
+                to="/#recensioni"
+                className="small-text"
+              >
+                Recensioni
+              </Nav.Link>
+              <Nav.Link
+                as={HashLink}
+                smooth
+                to="/#steps"
+                className="small-text"
+              >
+                Come Funziona
+              </Nav.Link>
+              <Nav.Link
+                as={HashLink}
+                smooth
+                to="/questionario"
+                className="small-text"
+              >
+                Questionario
+              </Nav.Link>
               <Nav.Link href="/registrazione-o-login">
                 <button className="button-green">LOGIN</button>
               </Nav.Link>

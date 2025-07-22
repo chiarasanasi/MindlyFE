@@ -1,0 +1,9 @@
+.scrollable-list {
+  list-style-type: decimal;
+  padding-inline-start: 1+5rem;
+}
+
+.scrollable-list li::marker {
+  color: #025f44;
+  font-weight: bold;
+}

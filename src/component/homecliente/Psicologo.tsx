@@ -3,7 +3,7 @@ import "/src/css/Psicologo.css"
 import { useEffect, useState } from "react"
 import { Container, Card, Row, Col, Badge } from "react-bootstrap"
 import NavBarClientePsico from "../NavbarClientePsico"
-import SidebarCliente from "./SidebarCliente"
+import SidebarCliente from "../Sidebar"
 
 const Psicologo = () => {
   const [psicologo, setPsicologo] = useState<any>(null)
@@ -31,45 +31,47 @@ const Psicologo = () => {
       <NavBarClientePsico />
       <SidebarCliente cliente={cliente} />
 
-      <Container className="d-flex justify-content-center align-items-center pt-5 spazio-dalla-navbar">
-        <Card
-          className="shadow p-4"
-          style={{
-            maxWidth: "600px",
-            width: "100%",
-            backgroundColor: "#e9fef1",
-          }}
-        >
-          <Row className="align-items-center">
-            <Col xs={12} md={4} className="text-center mb-3">
-              <img
-                src={psicologo.immagineProfilo}
-                alt={psicologo.nome}
-                className="img-fluid rounded-circle"
-                style={{ width: "100px", height: "100px", objectFit: "cover" }}
-              />
-            </Col>
-            <Col xs={12} md={8}>
-              <h4 className="fw-bold mb-1">
-                {psicologo.nome} {psicologo.cognome}
-              </h4>
-              <p className="mb-1 text-muted">{psicologo.email}</p>
-              <p className="mb-1">Età: {psicologo.eta}</p>
-              <p className="mb-1">Genere: {psicologo.genere}</p>
-              <p className="mb-1">
-                Specializzazione: <strong>{psicologo.specializzazione}</strong>
-              </p>
-              <p> {psicologo.descrizione}</p>
-              <div className="mt-2">
+      <Container className="d-flex justify-content-center align-items-center">
+        <Row className="justify-content-center">
+          <Col lg={6}>
+            <Card className="shadow p-4">
+              <div className="d-flex flex-column align-items-center">
+                <img
+                  src={psicologo.immagineProfilo}
+                  alt={psicologo.nome}
+                  className="img-fluid rounded-circle"
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    objectFit: "cover",
+                  }}
+                />
+                <h4 className="fw-bold mb-1">
+                  {psicologo.nome} {psicologo.cognome}
+                </h4>
+                <div className="d-flex">
+                  <p className="mb-1 mx-2">Età: {psicologo.eta}</p>
+                  <p className="mb-1 mx-2">Genere: {psicologo.genere}</p>
+                </div>
+                <p className="mb-1 text-muted">{psicologo.email}</p>
+
+                <p className="mb-1">
+                  Specializzazione:{" "}
+                  <strong>{psicologo.specializzazione}</strong>
+                </p>
+              </div>
+
+              <p className="m-3"> {psicologo.descrizione}</p>
+              <div className="mt-2 text-center">
                 {psicologo.tagList?.map((tag: string, index: number) => (
                   <Badge key={index} bg="success" className="me-1">
                     {tag}
                   </Badge>
                 ))}
               </div>
-            </Col>
-          </Row>
-        </Card>
+            </Card>
+          </Col>
+        </Row>
       </Container>
     </>
   )

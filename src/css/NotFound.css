@@ -1,0 +1,7 @@
+.spazio-dalla-navbar-404 {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

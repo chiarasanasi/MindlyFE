@@ -3,7 +3,7 @@ import { Row, Col, Form } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import "/src/css/Mindly.css"
 import "/src/css/RegistrazioneLogin.css"
-import NavBarMenu from "../component/NavBarMenu"
+import NavBarMenu from "../../component/NavBarMenu"
 
 const QuestionarioRegistrazione = () => {
   const navigate = useNavigate()
@@ -22,9 +22,8 @@ const QuestionarioRegistrazione = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setErrore("") // resetta eventuale errore precedente
+    setErrore("")
 
-    // validazione frontend
     const { nome, cognome, email, username, password } = formData
     if (!nome || !cognome || !email || !username || !password) {
       setErrore("Per favore, compila tutti i campi obbligatori.")

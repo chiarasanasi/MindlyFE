@@ -1,5 +1,5 @@
 .mindly-footer {
-  background-color: #d9f2e7; /* verde tenue */
+  background-color: #d9f2e7; 
   color: #0f5132;
   padding: 2rem 1rem;
   text-align: center;
@@ -33,5 +33,4 @@
 }
 
 .social-icons a:hover {
-  color: #ffd43b; /* giallo in hover */
-}
+  color: #ffd43b; 

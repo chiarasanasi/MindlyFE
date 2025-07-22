@@ -4,18 +4,15 @@
   max-height: 90vh;
 }
 
-/* Cambia colore intestazione */
 .sx__header {
   background-color: #e3fcef !important;
   color: #2e7d32 !important;
 }
 
-/* Colore giorno selezionato */
 .sx__day-cell--selected {
   background-color: #c8e6c9 !important;
 }
 
-/* Colore degli eventi */
 .sx__event {
   background-color: #79c36a !important;
   color: whitesmoke !important;
@@ -25,7 +22,6 @@
   font-weight: 500;
 }
 
-/* Cambia font ovunque */
 .sx__root {
   font-family: "Poppins", sans-serif;
 }

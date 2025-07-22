@@ -23,9 +23,7 @@ const Footer = () => {
               <li>
                 <a href="#steps">Cammina con noi </a>
               </li>
-              <li>
-                <a href="#mindly-blog">Blog</a>
-              </li>
+
               <li>
                 <Link to="/questionario">Questionario</Link>
               </li>
@@ -48,7 +46,7 @@ const Footer = () => {
         </Row>
         <hr />
         <p className="text-center small text-muted mb-0">
-          © {new Date().getFullYear()} Mindly – Tutti i diritti riservati.
+          © {new Date().getFullYear()} Mindly - Tutti i diritti riservati.
         </p>
       </Container>
     </footer>

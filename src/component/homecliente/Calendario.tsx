@@ -4,9 +4,8 @@ import { createViewMonthAgenda } from "@schedule-x/calendar"
 import { createEventsServicePlugin } from "@schedule-x/events-service"
 import "@schedule-x/theme-default/dist/index.css"
 import "/src/css/Calendario.css"
-import { Alert, Button, Card, Col, Container, Form, Row } from "react-bootstrap"
-import { useLocation } from "react-router-dom"
 import { createEventModalPlugin } from "@schedule-x/event-modal"
+import { fetchTokenScaduto } from "../../utilities/fetchTokenScaduto"
 
 const Calendario = () => {
   const eventsService = createEventsServicePlugin()
@@ -20,7 +19,7 @@ const Calendario = () => {
   const caricaEventi = async () => {
     const token = localStorage.getItem("token")
     try {
-      const res = await fetch(
+      const res = await fetchTokenScaduto(
         "http://localhost:8080/richieste-appuntamento/eventi",
         {
           headers: {
@@ -39,9 +38,6 @@ const Calendario = () => {
         description: ev.description || "Nessun messaggio",
       }))
 
-      // setEventi(eventiFormattati)
-      console.log(eventiFormattati)
-      // setCaricati(true)
       eventsService.set(eventiFormattati)
     } catch (err) {
       console.error("Errore eventi:", err)
@@ -51,8 +47,6 @@ const Calendario = () => {
   useEffect(() => {
     caricaEventi()
   }, [])
-
-  // ===================== FORM PER LA RICHIESTA =====================
 
   const [data, setData] = useState("")
   const [ora, setOra] = useState("")
@@ -65,14 +59,17 @@ const Calendario = () => {
     const token = localStorage.getItem("token")
 
     try {
-      const res = await fetch("http://localhost:8080/richieste-appuntamento", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ data, ora, messaggio }),
-      })
+      const res = await fetchTokenScaduto(
+        "http://localhost:8080/richieste-appuntamento",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ data, ora, messaggio }),
+        }
+      )
 
       if (!res.ok) throw new Error("Errore nella richiesta")
 

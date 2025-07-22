@@ -1,28 +1,64 @@
-import { useState } from "react"
-import { Row, Col, Form, Modal, Button } from "react-bootstrap"
+import { useState, useEffect } from "react"
+import { Row, Col, Form, Modal, Button, Alert } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import "/src/css/Mindly.css"
 import "/src/css/RegistrazioneLogin.css"
-import NavBarMenu from "../component/NavBarMenu"
+import NavBarMenu from "../../component/NavBarMenu"
+import { useRef } from "react"
 
 const Registrazione = () => {
+  localStorage.clear()
   const navigate = useNavigate()
+  const alertRef = useRef<HTMLDivElement>(null)
   const ruoloDaStorage = localStorage.getItem("ruolo") || ""
   const [showModal, setShowModal] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
+  const [specializzazioni, setSpecializzazioni] = useState<string[]>([])
 
   const [formData, setFormData] = useState({
     nome: "",
     cognome: "",
+    username: "",
     email: "",
     password: "",
     ruolo: ruoloDaStorage,
-    specializzazione: "",
+    specializzazione: [] as string[],
+    descrizione: "",
   })
+
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const res = await fetch("http://localhost:8080/tags")
+        const data = await res.json()
+        setSpecializzazioni(data.map((tag: any) => tag.nome))
+      } catch (err) {
+        console.error("Errore nel caricamento tag:", err)
+      }
+    }
+    fetchTags()
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setErrorMessage("")
 
-    const body: any = { ...formData }
+    if (
+      !formData.nome.trim() ||
+      !formData.cognome.trim() ||
+      !formData.username.trim() ||
+      !formData.email.trim() ||
+      !formData.password.trim() ||
+      (formData.ruolo === "PSICOLOGO" && formData.specializzazione.length === 0)
+    ) {
+      setErrorMessage("Compila tutti i campi obbligatori.")
+      return
+    }
+
+    const body: any = {
+      ...formData,
+      specializzazione: formData.specializzazione.join(", "),
+    }
 
     if (formData.ruolo === "CLIENTE") {
       const risposte = localStorage.getItem("risposteQuestionario")
@@ -36,12 +72,26 @@ const Registrazione = () => {
         body: JSON.stringify(body),
       })
 
-      if (!res.ok) throw new Error("Errore nella registrazione")
+      const data = await res.json()
+
+      if (!res.ok) {
+        setErrorMessage(data.message || "Errore nella registrazione")
+        setTimeout(() => {
+          alertRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          })
+        }, 100)
+        return
+      }
 
       console.log("Registrazione avvenuta con successo")
+      console.log(formData)
+      localStorage.clear()
       navigate("/login")
     } catch (err) {
       console.error("Errore:", err)
+      setErrorMessage("Errore imprevisto durante la registrazione")
     }
   }
 
@@ -54,6 +104,15 @@ const Registrazione = () => {
       }
     }
     setFormData({ ...formData, ruolo: nuovoRuolo })
+  }
+
+  const toggleSpecializzazione = (val: string) => {
+    setFormData((prev) => {
+      const selected = prev.specializzazione.includes(val)
+        ? prev.specializzazione.filter((s) => s !== val)
+        : [...prev.specializzazione, val]
+      return { ...prev, specializzazione: selected }
+    })
   }
 
   return (
@@ -83,6 +142,16 @@ const Registrazione = () => {
                   </h5>
                 ) : null}
 
+                {errorMessage && (
+                  <Alert
+                    ref={alertRef}
+                    variant="danger"
+                    className="text-center"
+                  >
+                    {errorMessage}
+                  </Alert>
+                )}
+
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3">
                     <Form.Label>Nome</Form.Label>
@@ -104,6 +173,18 @@ const Registrazione = () => {
                       value={formData.cognome}
                       onChange={(e) =>
                         setFormData({ ...formData, cognome: e.target.value })
+                      }
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Il tuo username"
+                      value={formData.username}
+                      onChange={(e) =>
+                        setFormData({ ...formData, username: e.target.value })
                       }
                     />
                   </Form.Group>
@@ -153,15 +234,33 @@ const Registrazione = () => {
 
                   {formData.ruolo === "PSICOLOGO" && (
                     <Form.Group className="mb-3">
-                      <Form.Label>Specializzazione</Form.Label>
+                      <Form.Label>Specializzazioni</Form.Label>
+                      {specializzazioni.map((tag) => (
+                        <Form.Check
+                          key={tag}
+                          type="checkbox"
+                          label={tag}
+                          checked={formData.specializzazione.includes(tag)}
+                          onChange={() => toggleSpecializzazione(tag)}
+                        />
+                      ))}
+                    </Form.Group>
+                  )}
+
+                  {formData.ruolo === "PSICOLOGO" && (
+                    <Form.Group className="mb-3">
+                      <Form.Label>
+                        Presentati con una breve descrizione
+                      </Form.Label>
                       <Form.Control
-                        type="text"
-                        placeholder="Es. disturbi alimentari, stress, ansia..."
-                        value={formData.specializzazione}
+                        as="textarea"
+                        rows={3}
+                        placeholder="Scrivi qualcosa su di te, esperienze, approccio terapeutico..."
+                        value={formData.descrizione}
                         onChange={(e) =>
                           setFormData({
                             ...formData,
-                            specializzazione: e.target.value,
+                            descrizione: e.target.value,
                           })
                         }
                       />
@@ -169,13 +268,7 @@ const Registrazione = () => {
                   )}
 
                   <div className="text-center">
-                    <button
-                      className="button-green mt-3"
-                      type="submit"
-                      onClick={() => {
-                        navigate("/login")
-                      }}
-                    >
+                    <button className="button-green mt-3" type="submit">
                       REGISTRATI
                     </button>
                   </div>
@@ -186,7 +279,6 @@ const Registrazione = () => {
         </div>
       </div>
 
-      {/* MODALE */}
       <Modal
         show={showModal}
         onHide={() => {

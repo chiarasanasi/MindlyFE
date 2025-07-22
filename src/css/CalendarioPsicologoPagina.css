@@ -1,0 +1,29 @@
+.button-accetta {
+  background-color: #cbedd6;
+  padding: 0.25em 1em;
+  border: none;
+  border-radius: 0.5em;
+  color: #025f44;
+  margin-left: 1em;
+}
+
+.button-rifiuta {
+  background-color: #edcbcb;
+  padding: 0.25em 1em;
+  border: none;
+  border-radius: 0.5em;
+  color: #5f0202;
+  margin-left: 1em;
+}
+
+.div-lista-appuntamenti {
+  max-height: 470px;
+  overflow: auto;
+}
+
+@media (max-width: 992px) {
+  .div-lista-appuntamenti {
+    max-height: 100%;
+    overflow: auto;
+  }
+}

@@ -1,11 +1,11 @@
 .blog-section {
-  background-color: #e6f4ec; /* verde chiaro */
+  background-color: #e6f4ec;
 }
 
 .blog-title {
   font-weight: 700;
   font-size: 2.5rem;
-  color: #0f5132; /* verde scuro */
+  color: #0f5132;
 }
 
 .blog-card-link {
@@ -28,12 +28,12 @@
 .blog-card-title {
   font-size: 1rem;
   font-weight: 600;
-  color: #0f5132; /* verde scuro */
+  color: #0f5132;
   margin-bottom: 1rem;
 }
 
 .read-button {
-  background-color: #ffe066; /* giallo pastello */
+  background-color: #ffe066;
   color: #0f5132;
   font-weight: 500;
   padding: 0.5rem 1rem;

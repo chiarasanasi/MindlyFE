@@ -11,35 +11,51 @@
   padding: 1em 0;
   width: 85%;
 }
-
-.phone-col {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-end !important;
+.contenitore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
 }
+
 .inizia-da-te {
   width: 80%;
+  object-position: 30px;
 }
 .inizia-da-te-testo {
   text-align: center;
+  width: 100% !important;
+  margin-left: 10%;
 }
 .contenitore {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 50%;
 }
 .phone {
   width: 35%;
 }
 
 @media (max-width: 768px) {
-  /* md e down */
-  .phone-col {
-    align-items: center !important;
-    margin-bottom: 5em;
+  .inizia-da-te {
+    width: 150%;
+    object-position: 40px;
   }
 
+  .inizia-da-te-testo {
+    text-align: center;
+    width: 200% !important;
+  }
+
+  .phone {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
   .inizia-da-te {
-    width: 100%;
+    width: 250%;
+    object-position: 40px;
   }
 }

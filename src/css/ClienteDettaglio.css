@@ -1,0 +1,76 @@
+.risposte-salvate {
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+  position: relative;
+}
+
+.note-salvate {
+  max-height: calc(75vh - 300px);
+  overflow-y: auto;
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .risposte-salvate {
+    width: 100%;
+  }
+
+  .note-salvate {
+    width: 100%;
+  }
+}
+
+.note-container {
+  background-color: #f8f9fa;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 1rem;
+  max-height: calc(75vh - 300px);
+  overflow-y: auto;
+}
+
+.note-title {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.note-empty {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.note-item {
+  margin-bottom: 1rem;
+}
+
+.note-date {
+  font-size: 0.75rem;
+  color: #6c757d;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.note-content {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.note-text {
+  margin: 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note-footer {
+  text-align: end;
+  margin-top: 0.5rem;
+}

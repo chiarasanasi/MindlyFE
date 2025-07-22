@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import NavBarClientePsico from "../NavbarClientePsico"
-import SidebarCliente from "./SidebarCliente"
-import { Container, Row, Col, Card, Button, Form } from "react-bootstrap"
+import NavBarClientePsico from "../../component/NavbarClientePsico"
+import SidebarCliente from "../../component/Sidebar"
+import { Container, Row, Col, Card, Form } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/Diario.css"
+import { fetchTokenScaduto } from "../../utilities/fetchTokenScaduto"
 
 interface Nota {
   id: number
@@ -19,7 +20,6 @@ const Diario = () => {
   const [editNoteId, setEditNoteId] = useState<number | null>(null)
   const [editContenuto, setEditContenuto] = useState("")
   const [loading, setLoading] = useState(true)
-  const [showModal, setShowModal] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -27,11 +27,14 @@ const Diario = () => {
 
     const fetchCliente = async () => {
       try {
-        const res = await fetch("http://localhost:8080/cliente/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        const res = await fetchTokenScaduto(
+          "http://localhost:8080/cliente/me",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
 
         if (!res.ok) throw new Error("Errore nel recupero cliente")
 
@@ -39,11 +42,11 @@ const Diario = () => {
         setCliente(data)
       } catch (err) {
         console.error("Errore cliente:", err)
-        setShowModal(true)
-        setTimeout(() => navigate("/login"), 3000)
-      } finally {
+        // evita di proseguire in caso di errore
         setLoading(false)
+        return
       }
+      setLoading(false)
     }
 
     fetchCliente()
@@ -51,19 +54,23 @@ const Diario = () => {
   }, [navigate])
 
   const fetchNote = async () => {
-    const res = await fetch("http://localhost:8080/note", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-    if (res.ok) {
-      const data = await res.json()
-      setNote(data)
+    try {
+      const res = await fetchTokenScaduto("http://localhost:8080/note", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setNote(data)
+      }
+    } catch (err) {
+      console.error("Errore note:", err)
     }
   }
 
   const salvaNota = async () => {
-    const res = await fetch("http://localhost:8080/note", {
+    const res = await fetchTokenScaduto("http://localhost:8080/note", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -79,7 +86,7 @@ const Diario = () => {
   }
 
   const eliminaNota = async (id: number) => {
-    await fetch(`http://localhost:8080/note/${id}`, {
+    await fetchTokenScaduto(`http://localhost:8080/note/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -89,7 +96,7 @@ const Diario = () => {
   }
 
   const aggiornaNota = async (id: number) => {
-    await fetch(`http://localhost:8080/note/${id}`, {
+    await fetchTokenScaduto(`http://localhost:8080/note/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -104,13 +111,14 @@ const Diario = () => {
   }
 
   if (loading) return <p className="text-center">Caricamento...</p>
+  if (!cliente) return null
 
   return (
     <>
       <NavBarClientePsico />
       <SidebarCliente cliente={cliente} />
-      <Container className="mt-4 mb-5">
-        <Row className="justify-content-center mb-4 spazio-dalla-navbar">
+      <Container className="mb-5">
+        <Row className="justify-content-center mb-4 ">
           <Col lg={12}>
             <h4 className="mb-3 h-verde">Ciao {cliente.nome}, come stai?</h4>
             <Form.Control
@@ -196,37 +204,6 @@ const Diario = () => {
           ))}
         </Row>
       </Container>
-
-      {showModal && (
-        <div
-          className="modal fade show d-block"
-          tabIndex={-1}
-          role="dialog"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-        >
-          <div className="modal-dialog modal-dialog-centered" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Sessione scaduta</h5>
-              </div>
-              <div className="modal-body">
-                <p>
-                  Per continuare, effettua di nuovo il login. La tua sessione
-                  potrebbe essere scaduta o non valida.
-                </p>
-              </div>
-              <div className="modal-footer">
-                <Button
-                  className="btn btn-primary"
-                  onClick={() => navigate("/login")}
-                >
-                  Vai al login ora
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   )
 }

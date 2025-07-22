@@ -1,5 +1,5 @@
-import NavBarMenu from "../component/NavBarMenu"
-import Domande from "../component/questionario/Domande"
+import NavBarMenu from "../../component/NavBarMenu"
+import Domande from "../../component/questionario/Domande"
 
 const Questionario = () => {
   return (

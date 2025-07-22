@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { Row, Col, Form } from "react-bootstrap"
+import { Row, Col, Form, Alert } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import "/src/css/Mindly.css"
 import "/src/css/RegistrazioneLogin.css"
-import NavBarMenu from "../component/NavBarMenu"
+import NavBarMenu from "../../component/NavBarMenu"
 
 const Login = () => {
   const navigate = useNavigate()
@@ -13,6 +13,8 @@ const Login = () => {
     email: "",
     password: "",
   })
+
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -26,7 +28,11 @@ const Login = () => {
         body: JSON.stringify(body),
       })
 
-      if (!res.ok) throw new Error("Errore nel Login")
+      if (!res.ok) {
+        const errorJson = await res.json()
+        setErrorMessage(errorJson.message || "Errore nel login")
+        throw new Error(errorJson.message)
+      }
 
       const token = await res.text()
       localStorage.setItem("token", token)
@@ -48,14 +54,30 @@ const Login = () => {
 
       console.log("Login avvenuto con successo. Benvenut* " + formData.username)
 
-      const resUtente = await fetch("http://localhost:8080/cliente/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      if (resUtente.ok) {
-        const utente = await resUtente.json()
-        localStorage.setItem("utente", JSON.stringify(utente))
+      let resUtente
+
+      if (ruolo === "CLIENTE") {
+        resUtente = await fetch("http://localhost:8080/cliente/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
+        if (resUtente.ok) {
+          const utente = await resUtente.json()
+          localStorage.setItem("utente", JSON.stringify(utente))
+        }
+      } else if (ruolo === "PSICOLOGO") {
+        resUtente = await fetch("http://localhost:8080/psicologo/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+
+        if (resUtente.ok) {
+          const utente = await resUtente.json()
+          localStorage.setItem("utente", JSON.stringify(utente))
+        }
       }
     } catch (err) {
       console.error("Errore:", err)
@@ -70,8 +92,19 @@ const Login = () => {
 
           <div className="container py-5 spazio-dalla-navbar">
             <Row className="justify-content-center">
-              <Col lg={6}>
+              <Col lg={6} md={10} sm={10} xs={10}>
                 <h3 className="text-center h-verde fw-semibold mb-4">LOGIN!</h3>
+
+                {errorMessage && (
+                  <Alert
+                    variant="danger"
+                    onClose={() => setErrorMessage(null)}
+                    dismissible
+                    className="text-center"
+                  >
+                    {errorMessage}
+                  </Alert>
+                )}
 
                 <Form onSubmit={handleSubmit}>
                   <Form.Group className="mb-3">

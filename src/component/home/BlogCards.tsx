@@ -1,8 +1,7 @@
-// MindlyBlog.tsx
-import React from "react"
 import { Container, Row, Col, Card } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/BlogCard.css"
+import { Link } from "react-router-dom"
 const articoli = [
   {
     title: "Tipi di psicoterapia: quali sono?",
@@ -56,21 +55,21 @@ const BlogCard = () => {
         <Row className="g-4">
           {articoli.map((article, i) => (
             <Col xs={12} sm={6} md={4} lg={3} key={i}>
-              <a href={article.link} className="blog-card-link">
-                <Card className="blog-card h-100">
-                  <Card.Img
-                    variant="top"
-                    src={article.image}
-                    alt={article.title}
-                  />
-                  <Card.Body>
-                    <Card.Title className="blog-card-title">
-                      {article.title}
-                    </Card.Title>
+              <Card className="blog-card h-100">
+                <Card.Img
+                  variant="top"
+                  src={article.image}
+                  alt={article.title}
+                />
+                <Card.Body>
+                  <Card.Title className="blog-card-title">
+                    {article.title}
+                  </Card.Title>
+                  <Link to={article.link} className="blog-card-link">
                     <button className="read-button">Leggi l'articolo</button>
-                  </Card.Body>
-                </Card>
-              </a>
+                  </Link>
+                </Card.Body>
+              </Card>
             </Col>
           ))}
         </Row>

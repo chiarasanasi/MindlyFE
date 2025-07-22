@@ -1,0 +1,21 @@
+import "/src/css/Mindly.css"
+import "/src/css/Welcome.css"
+
+const WelcomePsicologo = (props) => {
+  const { psicologo } = props
+  if (!psicologo) return <p className="text-center">Caricamento...</p>
+
+  return (
+    <>
+      <div className="banner text-center py-3">
+        <h2 className="h-verde">Ciao, {psicologo.nome}!</h2>
+        <p className="h-verde">
+          Benvenut* nella tua area riservata. Qui puoi consultare gli
+          appuntamenti e vedere i tuoi clienti.
+        </p>
+      </div>
+    </>
+  )
+}
+
+export default WelcomePsicologo

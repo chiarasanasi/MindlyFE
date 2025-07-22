@@ -1,33 +1,30 @@
+let attivatoreModaleGlobale: (() => void) | null = null
+
+export const registerTriggerExpiredModal = (fn: () => void) => {
+  attivatoreModaleGlobale = fn
+}
+
 export async function fetchTokenScaduto(
   url: string,
-  options: RequestInit = {},
-  onUnauthorized?: () => void
+  options: RequestInit = {}
 ): Promise<Response> {
   const token = localStorage.getItem("token")
 
-  const headers = {
+  const intestazioni = {
     ...options.headers,
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
   }
 
-  const response = await fetch(url, {
+  const risposta = await fetch(url, {
     ...options,
-    headers,
+    headers: intestazioni,
   })
 
-  if (response.status === 401) {
-    // Notifica il componente che sta per fare il redirect
-    if (onUnauthorized) onUnauthorized()
-
-    // Ritarda il redirect di 2.5 secondi per mostrare la modale
-    setTimeout(() => {
-      localStorage.removeItem("token")
-      window.location.href = "/login"
-    }, 2500)
-
+  if (risposta.status === 401 || risposta.status === 403) {
+    if (attivatoreModaleGlobale) attivatoreModaleGlobale()
     return Promise.reject("Token scaduto o non valido")
   }
 
-  return response
+  return risposta
 }

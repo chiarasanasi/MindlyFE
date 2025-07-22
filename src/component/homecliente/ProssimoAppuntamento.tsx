@@ -1,4 +1,3 @@
-import { Container, Row } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/Welcome.css"
 

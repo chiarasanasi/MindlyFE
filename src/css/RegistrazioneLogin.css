@@ -1,15 +1,14 @@
 .sfondo {
   background: url("/img/sfondoQuestionario.jpg") center/cover no-repeat;
-  position: relative; /* necessario per il ::before */
+  position: relative;
   min-height: 100vh;
 }
 
-/* crea il velo */
 .sfondo::before {
   content: "";
   position: absolute;
-  inset: 0; /* occupa tutta la sfondo */
-  background: rgba(226, 255, 227, 0.85); /* trasparenza gestibile */
+  inset: 0;
+  background: rgba(226, 255, 227, 0.85);
   z-index: 0;
 }
 

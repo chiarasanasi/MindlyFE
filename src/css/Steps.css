@@ -1,6 +1,6 @@
 .circle-step {
   position: relative;
-  width: 180px; /* o la larghezza del tuo circle.svg */
+  width: 180px;
 }
 
 .circle-step-img {
@@ -49,8 +49,8 @@
 
 .step-wrapper {
   position: relative;
-  height: 220px; /* o quanto ti serve per contenere bene cerchio + card */
-  margin: 0 3rem; /* spazio tra le righe di card */
+  height: 220px;
+  margin: 0 3rem;
   display: flex;
   justify-content: center;
 }
@@ -60,7 +60,6 @@
 }
 
 @media (max-width: 991.98px) {
-  /* md e down */
   .step-wrapper {
     height: 220px;
     margin-bottom: 13rem;
@@ -71,10 +70,24 @@
   }
 }
 
+.gy-4 {
+  flex: 0 0 auto;
+  width: 25%;
+  -cui-gutter-y: 1.5rem;
+}
+
 @media (max-width: 767.98px) {
-  /* sm e down */
   .step-wrapper {
     height: 220px;
     margin-bottom: 13rem;
+  }
+}
+
+@media only screen and (max-device-width: 1400px) and (min-device-width: 993px) {
+  .gy-4 {
+    flex: 0 0 auto !important;
+    width: 35% !important;
+    --cui-gutter-y: 15rem !important;
+    justify-content: center !important;
   }
 }

@@ -1,17 +1,17 @@
 .questionario-sfondo {
   min-height: 100vh;
-  background-image: url("/public/img/sfondoQuestionario.jpg"); /* o .jpg, .svg, ecc. */
-  background-size: cover; /* adatta l'immagine a coprire tutta la pagina */
-  background-position: center; /* centra l'immagine */
-  background-repeat: no-repeat; /* evita la ripetizione */
+  background-image: url("/public/img/sfondoQuestionario.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
 }
 
 .background-overlay-questionario {
   position: absolute;
-  inset: 0; /* equivale a top: 0; right: 0; bottom: 0; left: 0; */
-  background-color: rgba(226, 255, 227, 0.821); /* bianco con trasparenza 60% */
+  inset: 0;
+  background-color: rgba(226, 255, 227, 0.821);
   z-index: 0;
 }
 .domanda {

@@ -1,5 +1,3 @@
-/* RecensioniMockup.css */
-
 .scroll-container {
   scroll-behavior: smooth;
   cursor: grab;
@@ -27,7 +25,7 @@
 
 .stars {
   font-size: 1.2rem;
-  color: #00b67a; /* Trustpilot green */
+  color: #00b67a;
   letter-spacing: 1px;
 }
 

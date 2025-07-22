@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import { Row, Col } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/RegistrazioneLogin.css"
-import NavBarMenu from "../component/NavBarMenu"
+import NavBarMenu from "../../component/NavBarMenu"
 
 const RegistrazioneLogin = () => {
   const navigate = useNavigate()

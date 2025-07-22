@@ -1,4 +1,3 @@
-import { Container, Row } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/Welcome.css"
 
@@ -11,7 +10,7 @@ const WelcomeUtente = ({ cliente }: Props) => {
 
   return (
     <>
-      <div className="text-center marginenavbar banner">
+      <div className="text-center banner">
         <p className="p-3 m-0 h-verde">Ciao, {cliente.nome}, come stai?</p>
         <h3 className="pb-4 m-0 h-verde">
           Meriti del tempo per te. Inizia da oggi.

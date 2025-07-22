@@ -36,7 +36,6 @@
   margin-top: 6em;
 }
 
-/* MOBILE: nasconde immagine e mette background */
 @media (max-width: 767px) {
   .header-wrapper {
     background-image: url("/public/img/foto1.jpg");
@@ -55,7 +54,7 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background-color: rgba(2, 95, 68, 0.6); /* Patina verde trasparente */
+    background-color: rgba(2, 95, 68, 0.6);
     z-index: 1;
   }
 

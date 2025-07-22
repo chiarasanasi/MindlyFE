@@ -1,0 +1,22 @@
+.blog-dettaglio-container {
+  background-color: #fdfdfd;
+}
+
+.blog-dettaglio-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #2e8b57;
+}
+
+.blog-dettaglio-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.blog-dettaglio-content {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  text-align: justify;
+  padding: 0 1rem;
+}

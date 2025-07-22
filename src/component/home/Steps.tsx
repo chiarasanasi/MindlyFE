@@ -3,6 +3,7 @@ import "/src/css/Steps.css"
 import Card from "react-bootstrap/Card"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import { Container } from "react-bootstrap"
 
 const stepsData = [
   {
@@ -78,38 +79,40 @@ const stepsData = [
 
 const Steps = () => {
   return (
-    <div className="d-flex flex-wrap justify-content-center gap-4 py-3">
-      <Row className="g-4 margine">
-        {stepsData.map((step, index) => (
-          <Col key={index} xs={12} md={6} lg={3}>
-            <div className="step-wrapper">
-              <div
-                key={index}
-                className="position-relative d-flex justify-content-center align-items-center flex-column"
-              >
-                <div className="circle-step mb-2">
-                  <img
-                    src="/img/circle.svg"
-                    alt={`step ${step.numero}`}
-                    className="circle-step-img"
-                  />
-                  <p className="circle-step-p">{step.numero}</p>
+    <Container>
+      <div className="d-flex flex-wrap justify-content-center gap-4 py-3">
+        <Row className="g-4 margine justify-content-center">
+          {stepsData.map((step, index) => (
+            <Col key={index} xs={12} md={6} lg={3} className="gy-4">
+              <div className="step-wrapper">
+                <div
+                  key={index}
+                  className="position-relative d-flex justify-content-center align-items-center flex-column"
+                >
+                  <div className="circle-step mb-2">
+                    <img
+                      src="/img/circle.svg"
+                      alt={`step ${step.numero}`}
+                      className="circle-step-img"
+                    />
+                    <p className="circle-step-p">{step.numero}</p>
+                  </div>
+                  <Card className="card-step text-center">
+                    <Card.Body className="d-flex flex-column align-items-center">
+                      <div className="icon-step mb-3">{step.icon}</div>
+                      <Card.Title className="titolo-card">
+                        {step.titolo}
+                      </Card.Title>
+                      <Card.Text>{step.descrizione}</Card.Text>
+                    </Card.Body>
+                  </Card>
                 </div>
-                <Card className="card-step text-center">
-                  <Card.Body className="d-flex flex-column align-items-center">
-                    <div className="icon-step mb-3">{step.icon}</div>
-                    <Card.Title className="titolo-card">
-                      {step.titolo}
-                    </Card.Title>
-                    <Card.Text>{step.descrizione}</Card.Text>
-                  </Card.Body>
-                </Card>
               </div>
-            </div>
-          </Col>
-        ))}
-      </Row>
-    </div>
+            </Col>
+          ))}
+        </Row>
+      </div>
+    </Container>
   )
 }
 
