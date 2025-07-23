@@ -1,9 +1,17 @@
-import React from "react"
 import "/src/css/ListaClienti.css"
 
-const ListaClienti = (props) => {
-  const { clienti } = props
+interface Cliente {
+  id: number
+  nome: string
+  cognome: string
+  motivo: string
+}
 
+interface ListaClientiProps {
+  clienti: Cliente[]
+}
+
+const ListaClienti = ({ clienti }: ListaClientiProps) => {
   return (
     <div className="mini-diario my-3">
       <h4 className="h-verde">Clienti assegnati</h4>

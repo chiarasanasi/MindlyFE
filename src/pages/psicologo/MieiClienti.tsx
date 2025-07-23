@@ -10,20 +10,6 @@ const MieiClienti = () => {
   const username = localStorage.getItem("username")
 
   const [clienti, setClienti] = useState([])
-  const [psicologo, setPsicologo] = useState<any>(null)
-
-  const fetchPsicologo = async () => {
-    try {
-      const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/psicologo/me`,
-        {}
-      )
-      const data = await res.json()
-      setPsicologo(data)
-    } catch (err) {
-      console.error("Errore psicologo:", err)
-    }
-  }
 
   const caricaClienti = async () => {
     const token = localStorage.getItem("token")

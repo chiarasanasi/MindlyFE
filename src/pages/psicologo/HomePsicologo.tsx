@@ -74,7 +74,7 @@ const HomePsicologo = () => {
   return (
     <>
       <NavBarClientePsico />
-      <SidebarCliente psicologo={psicologo} />
+      <SidebarCliente />
 
       <Container>
         <Row className="justify-content-center">

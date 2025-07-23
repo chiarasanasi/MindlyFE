@@ -7,6 +7,7 @@ import SidebarCliente from "../../component/Sidebar"
 import { domande } from "../../component/questionario/DomandeQuestionario"
 import "/src/css/Mindly.css"
 import "/src/css/ClienteDettaglio.css"
+import type { Nota } from "../../utilities/InterfaceTypes"
 
 const ClienteDettaglio = () => {
   const { usernameCliente } = useParams()

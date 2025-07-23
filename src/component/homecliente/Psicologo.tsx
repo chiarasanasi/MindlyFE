@@ -1,5 +1,5 @@
 import "/src/css/Mindly.css"
-import "/src/css/Psicologo.css"
+
 import { useEffect, useState } from "react"
 import { Container, Card, Row, Col, Badge } from "react-bootstrap"
 import NavBarClientePsico from "../NavbarClientePsico"

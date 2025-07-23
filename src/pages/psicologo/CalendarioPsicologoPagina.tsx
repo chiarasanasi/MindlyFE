@@ -6,10 +6,12 @@ import NavBarClientePsico from "../../component/NavbarClientePsico"
 import SidebarCliente from "../../component/Sidebar"
 import "/src/css/CalendarioPsicologoPagina.css"
 
+import type { RichiestaAppuntamento } from "../../utilities/InterfaceTypes"
+
 const CalendarioPsicologoPagina = () => {
   const calendarioRef = useRef<any>(null)
-  const [richieste, setRichieste] = useState([])
-  const [psicologo, setPsicologo] = useState<any>(null)
+  const [richieste, setRichieste] = useState<RichiestaAppuntamento[]>([])
+  const [, setPsicologo] = useState<any>(null)
 
   const fetchPsicologo = async () => {
     try {
@@ -73,8 +75,12 @@ const CalendarioPsicologoPagina = () => {
     }
   }
 
-  const richiesteInAttesa = richieste.filter((r) => r.stato === "IN_ATTESA")
-  const appuntamentiAccettati = richieste.filter((r) => r.stato === "ACCETTATA")
+  const richiesteInAttesa = richieste.filter(
+    (r: RichiestaAppuntamento) => r.stato === "IN_ATTESA"
+  )
+  const appuntamentiAccettati = richieste.filter(
+    (r: RichiestaAppuntamento) => r.stato === "ACCETTATA"
+  )
 
   console.log(richieste)
   return (

@@ -10,6 +10,14 @@ import NavBarClientePsico from "../../component/NavbarClientePsico"
 import SidebarCliente from "../../component/Sidebar"
 import { fetchTokenScaduto } from "../../utilities/fetchTokenScaduto"
 
+interface RichiestaAppuntamento {
+  id: number
+  data: string
+  ora: string
+  messaggio: string
+  stato: string
+}
+
 const CalendarioCliente = () => {
   const cliente = JSON.parse(localStorage.getItem("utente") || "{}")
 

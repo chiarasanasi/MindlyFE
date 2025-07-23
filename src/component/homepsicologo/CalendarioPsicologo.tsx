@@ -1,4 +1,4 @@
-import { useEffect, useState, forwardRef, useImperativeHandle } from "react"
+import { useEffect, forwardRef, useImperativeHandle } from "react"
 import { useCalendarApp, ScheduleXCalendar } from "@schedule-x/react"
 import { createViewMonthAgenda } from "@schedule-x/calendar"
 import { createEventsServicePlugin } from "@schedule-x/events-service"
@@ -10,8 +10,8 @@ import { fetchTokenScaduto } from "../../utilities/fetchTokenScaduto"
 const eventsService = createEventsServicePlugin()
 const eventModal = createEventModalPlugin()
 
-const CalendarioPsicologo = forwardRef((props, ref) => {
-  const [nessunEvento, setNessunEvento] = useState(false)
+const CalendarioPsicologo = forwardRef((props: any, ref) => {
+  void props
 
   const calendar = useCalendarApp({
     views: [createViewMonthAgenda()],
@@ -20,6 +20,8 @@ const CalendarioPsicologo = forwardRef((props, ref) => {
 
   const caricaEventiPsicologo = async () => {
     const token = localStorage.getItem("token")
+    if (!token) return
+
     const payload = JSON.parse(atob(token.split(".")[1]))
     console.log("PAYLOAD", payload)
     try {
@@ -43,7 +45,6 @@ const CalendarioPsicologo = forwardRef((props, ref) => {
         description: ev.description || "Nessuna descrizione",
       }))
 
-      setNessunEvento(eventiFormattati.length === 0)
       eventsService.set(eventiFormattati)
     } catch (err) {
       console.error("Errore eventi psicologo:", err)

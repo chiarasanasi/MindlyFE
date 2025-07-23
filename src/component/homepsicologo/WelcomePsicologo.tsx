@@ -1,8 +1,15 @@
 import "/src/css/Mindly.css"
 import "/src/css/Welcome.css"
 
-const WelcomePsicologo = (props) => {
-  const { psicologo } = props
+interface Psicologo {
+  nome: string
+}
+
+interface WelcomePsicologoProps {
+  psicologo: Psicologo
+}
+
+const WelcomePsicologo = ({ psicologo }: WelcomePsicologoProps) => {
   if (!psicologo) return <p className="text-center">Caricamento...</p>
 
   return (

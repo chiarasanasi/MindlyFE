@@ -12,6 +12,13 @@ import "/src/css/Mindly.css"
 import "/src/css/Calendario.css"
 import { fetchTokenScaduto } from "../../utilities/fetchTokenScaduto"
 
+export interface Nota {
+  id: number
+  titolo: string
+  contenuto: string
+  dataCreazione: string
+}
+
 const HomeCliente = () => {
   interface DecodedToken {
     username: string
@@ -28,6 +35,7 @@ const HomeCliente = () => {
   const [cliente, setCliente] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [note, setNote] = useState<Nota[]>([])
+  void note
   const navigate = useNavigate()
 
   useEffect(() => {
