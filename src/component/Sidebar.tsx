@@ -10,7 +10,7 @@ import {
 } from "@coreui/icons"
 
 import "/src/css/Mindly.css"
-import "/src/css/SideBar.css"
+import "/src/css/Sidebar.css"
 import { jwtDecode } from "jwt-decode"
 import { useState } from "react"
 
