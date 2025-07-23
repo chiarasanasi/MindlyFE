@@ -15,7 +15,7 @@ const MieiClienti = () => {
   const fetchPsicologo = async () => {
     try {
       const res = await fetchTokenScaduto(
-        "http://localhost:8080/psicologo/me",
+        `${process.env._BACKEND_URL}/psicologo/me`,
         {}
       )
       const data = await res.json()
@@ -29,7 +29,7 @@ const MieiClienti = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        "http://localhost:8080/psicologo/clienti",
+        `${process.env._BACKEND_URL}/psicologo/clienti`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -29,7 +29,7 @@ const Registrazione = () => {
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const res = await fetch("http://localhost:8080/tags")
+        const res = await fetch(`${process.env._BACKEND_URL}/tags`)
         const data = await res.json()
         setSpecializzazioni(data.map((tag: any) => tag.nome))
       } catch (err) {
@@ -66,11 +66,14 @@ const Registrazione = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:8080/auth/registrazione", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      })
+      const res = await fetch(
+        `${process.env._BACKEND_URL}/auth/registrazione`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      )
 
       const data = await res.json()
 

@@ -22,7 +22,7 @@ const Login = () => {
     const body: any = { ...formData }
 
     try {
-      const res = await fetch("http://localhost:8080/auth/login", {
+      const res = await fetch(`${process.env._BACKEND_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -57,7 +57,7 @@ const Login = () => {
       let resUtente
 
       if (ruolo === "CLIENTE") {
-        resUtente = await fetch("http://localhost:8080/cliente/me", {
+        resUtente = await fetch(`${process.env._BACKEND_URL}/cliente/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -68,7 +68,7 @@ const Login = () => {
           localStorage.setItem("utente", JSON.stringify(utente))
         }
       } else if (ruolo === "PSICOLOGO") {
-        resUtente = await fetch("http://localhost:8080/psicologo/me", {
+        resUtente = await fetch(`${process.env._BACKEND_URL}/psicologo/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

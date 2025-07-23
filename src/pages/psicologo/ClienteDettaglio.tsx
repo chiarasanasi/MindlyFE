@@ -27,7 +27,7 @@ const ClienteDettaglio = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        `http://localhost:8080/psicologo/clienti/${usernameCliente}`,
+        `${process.env._BACKEND_URL}/psicologo/clienti/${usernameCliente}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -48,7 +48,9 @@ const ClienteDettaglio = () => {
 
   const fetchPsicologo = async () => {
     try {
-      const res = await fetchTokenScaduto("http://localhost:8080/psicologo/me")
+      const res = await fetchTokenScaduto(
+        `${process.env._BACKEND_URL}/psicologo/me`
+      )
       const data = await res.json()
       setPsicologo(data)
     } catch (err) {
@@ -59,7 +61,7 @@ const ClienteDettaglio = () => {
   const fetchNotePsicologo = async () => {
     try {
       const res = await fetchTokenScaduto(
-        `http://localhost:8080/note-psicologo/${usernameCliente}`,
+        `${process.env._BACKEND_URL}/note-psicologo/${usernameCliente}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -79,7 +81,7 @@ const ClienteDettaglio = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        `http://localhost:8080/utente/${usernameCliente}`,
+        `${process.env._BACKEND_URL}/utente/${usernameCliente}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -98,7 +100,7 @@ const ClienteDettaglio = () => {
 
   const salvaNota = async () => {
     const res = await fetchTokenScaduto(
-      "http://localhost:8080/note-psicologo",
+      `${process.env._BACKEND_URL}/note-psicologo`,
       {
         method: "POST",
         headers: {
@@ -119,24 +121,30 @@ const ClienteDettaglio = () => {
   }
 
   const eliminaNota = async (id: number) => {
-    await fetchTokenScaduto(`http://localhost:8080/note-psicologo/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    await fetchTokenScaduto(
+      `${process.env._BACKEND_URL}/note-psicologo/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
     fetchNotePsicologo()
   }
 
   const aggiornaNota = async (id: number) => {
-    await fetchTokenScaduto(`http://localhost:8080/note-psicologo/${id}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ contenuto: editContenuto }),
-    })
+    await fetchTokenScaduto(
+      `${process.env._BACKEND_URL}/note-psicologo/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ contenuto: editContenuto }),
+      }
+    )
 
     setEditNoteId(null)
     setEditContenuto("")

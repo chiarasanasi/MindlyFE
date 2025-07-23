@@ -38,7 +38,7 @@ const HomePsicologo = () => {
     const fetchPsicologo = async () => {
       try {
         const res = await fetchTokenScaduto(
-          "http://localhost:8080/psicologo/me",
+          `${process.env._BACKEND_URL}/psicologo/me`,
           {}
         )
         const data = await res.json()
@@ -53,7 +53,7 @@ const HomePsicologo = () => {
     const fetchClienti = async () => {
       try {
         const res = await fetchTokenScaduto(
-          "http://localhost:8080/psicologo/clienti",
+          `${process.env._BACKEND_URL}/psicologo/clienti`,
           {}
         )
         if (res.ok) {

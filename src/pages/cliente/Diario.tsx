@@ -55,7 +55,7 @@ const Diario = () => {
 
   const fetchNote = async () => {
     try {
-      const res = await fetchTokenScaduto("http://localhost:8080/note", {
+      const res = await fetchTokenScaduto(`${process.env._BACKEND_URL}/note`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -70,7 +70,7 @@ const Diario = () => {
   }
 
   const salvaNota = async () => {
-    const res = await fetchTokenScaduto("http://localhost:8080/note", {
+    const res = await fetchTokenScaduto(`${process.env._BACKEND_URL}/note`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -86,7 +86,7 @@ const Diario = () => {
   }
 
   const eliminaNota = async (id: number) => {
-    await fetchTokenScaduto(`http://localhost:8080/note/${id}`, {
+    await fetchTokenScaduto(`${process.env._BACKEND_URL}/note/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -96,7 +96,7 @@ const Diario = () => {
   }
 
   const aggiornaNota = async (id: number) => {
-    await fetchTokenScaduto(`http://localhost:8080/note/${id}`, {
+    await fetchTokenScaduto(`${process.env._BACKEND_URL}/note/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

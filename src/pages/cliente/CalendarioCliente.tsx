@@ -31,7 +31,7 @@ const CalendarioCliente = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        "http://localhost:8080/richieste-appuntamento/eventi",
+        `${process.env._BACKEND_URL}/richieste-appuntamento/eventi`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -65,7 +65,7 @@ const CalendarioCliente = () => {
   const caricaRichieste = async () => {
     const token = localStorage.getItem("token")
     const res = await fetchTokenScaduto(
-      "http://localhost:8080/richieste-appuntamento/cliente",
+      `${process.env._BACKEND_URL}/richieste-appuntamento/cliente`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -110,7 +110,7 @@ const CalendarioCliente = () => {
 
     try {
       const res = await fetchTokenScaduto(
-        "http://localhost:8080/richieste-appuntamento",
+        `${process.env._BACKEND_URL}/richieste-appuntamento`,
         {
           method: "POST",
           headers: {

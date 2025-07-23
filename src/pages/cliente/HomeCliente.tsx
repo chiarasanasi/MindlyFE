@@ -40,7 +40,7 @@ const HomeCliente = () => {
     const fetchCliente = async () => {
       try {
         const res = await fetchTokenScaduto(
-          "http://localhost:8080/cliente/me",
+          `${process.env._BACKEND_URL}/cliente/me`,
           {}
         )
         const data = await res.json()
@@ -55,7 +55,10 @@ const HomeCliente = () => {
 
     const fetchNote = async () => {
       try {
-        const res = await fetchTokenScaduto("http://localhost:8080/note", {})
+        const res = await fetchTokenScaduto(
+          `${process.env._BACKEND_URL}/note`,
+          {}
+        )
         if (res.ok) {
           const data = await res.json()
           setNote(data)

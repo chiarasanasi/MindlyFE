@@ -15,7 +15,7 @@ const MiniDiario = () => {
   const username = localStorage.getItem("username")
 
   const fetchNote = async () => {
-    const res = await fetchTokenScaduto("http://localhost:8080/note", {
+    const res = await fetchTokenScaduto(`${process.env._BACKEND_URL}/note`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
