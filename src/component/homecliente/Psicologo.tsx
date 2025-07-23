@@ -29,7 +29,7 @@ const Psicologo = () => {
   return (
     <>
       <NavBarClientePsico />
-      <SidebarCliente cliente={cliente} />
+      <SidebarCliente />
 
       <Container className="d-flex justify-content-center align-items-center">
         <Row className="justify-content-center">

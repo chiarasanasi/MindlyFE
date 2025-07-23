@@ -139,7 +139,7 @@ const CalendarioCliente = () => {
   return (
     <div>
       <NavBarClientePsico />
-      <SidebarCliente cliente={cliente} />
+      <SidebarCliente />
       <Container>
         <Row className=" justify-content-center">
           <Col lg={6}>

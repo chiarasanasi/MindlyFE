@@ -164,7 +164,7 @@ const ClienteDettaglio = () => {
   return (
     <>
       <NavBarClientePsico />
-      <SidebarCliente psicologo={psicologo} />
+      <SidebarCliente />
       <Container>
         <Col>
           <Card className="py-3 text-center">

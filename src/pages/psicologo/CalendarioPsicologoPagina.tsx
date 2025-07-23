@@ -80,7 +80,7 @@ const CalendarioPsicologoPagina = () => {
   return (
     <>
       <NavBarClientePsico />
-      <SidebarCliente psicologo={psicologo} />
+      <SidebarCliente />
       <Container>
         <Row>
           <Col lg={6} className="m-0 mb-4">

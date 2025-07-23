@@ -116,7 +116,7 @@ const Diario = () => {
   return (
     <>
       <NavBarClientePsico />
-      <SidebarCliente cliente={cliente} />
+      <SidebarCliente />
       <Container className="mb-5">
         <Row className="justify-content-center mb-4 ">
           <Col lg={12}>

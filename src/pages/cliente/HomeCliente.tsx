@@ -86,7 +86,7 @@ const HomeCliente = () => {
     <>
       <NavBarClientePsico />
 
-      <SidebarCliente cliente={cliente} />
+      <SidebarCliente />
       <Container>
         <Row className="justify-content-center">
           <Col lg={12}>
