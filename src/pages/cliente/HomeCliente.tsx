@@ -40,7 +40,7 @@ const HomeCliente = () => {
     const fetchCliente = async () => {
       try {
         const res = await fetchTokenScaduto(
-          `${process.env._BACKEND_URL}/cliente/me`,
+          `${process.env.REACT_APP_BACKEND_URL}/cliente/me`,
           {}
         )
         const data = await res.json()
@@ -56,7 +56,7 @@ const HomeCliente = () => {
     const fetchNote = async () => {
       try {
         const res = await fetchTokenScaduto(
-          `${process.env._BACKEND_URL}/note`,
+          `${process.env.REACT_APP_BACKEND_URL}/note`,
           {}
         )
         if (res.ok) {

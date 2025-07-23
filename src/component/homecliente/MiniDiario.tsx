@@ -15,11 +15,14 @@ const MiniDiario = () => {
   const username = localStorage.getItem("username")
 
   const fetchNote = async () => {
-    const res = await fetchTokenScaduto(`${process.env._BACKEND_URL}/note`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    const res = await fetchTokenScaduto(
+      `${process.env.REACT_APP_BACKEND_URL}/note`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
     if (res.ok) {
       const data = await res.json()
       setNote(data)

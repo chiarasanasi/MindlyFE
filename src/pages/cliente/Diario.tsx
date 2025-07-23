@@ -55,11 +55,14 @@ const Diario = () => {
 
   const fetchNote = async () => {
     try {
-      const res = await fetchTokenScaduto(`${process.env._BACKEND_URL}/note`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      const res = await fetchTokenScaduto(
+        `${process.env.REACT_APP_BACKEND_URL}/note`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       if (res.ok) {
         const data = await res.json()
         setNote(data)
@@ -70,14 +73,17 @@ const Diario = () => {
   }
 
   const salvaNota = async () => {
-    const res = await fetchTokenScaduto(`${process.env._BACKEND_URL}/note`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ contenuto: nuovaNota }),
-    })
+    const res = await fetchTokenScaduto(
+      `${process.env.REACT_APP_BACKEND_URL}/note`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ contenuto: nuovaNota }),
+      }
+    )
 
     if (res.ok) {
       setNuovaNota("")
@@ -86,7 +92,7 @@ const Diario = () => {
   }
 
   const eliminaNota = async (id: number) => {
-    await fetchTokenScaduto(`${process.env._BACKEND_URL}/note/${id}`, {
+    await fetchTokenScaduto(`${process.env.REACT_APP_BACKEND_URL}/note/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -96,7 +102,7 @@ const Diario = () => {
   }
 
   const aggiornaNota = async (id: number) => {
-    await fetchTokenScaduto(`${process.env._BACKEND_URL}/note/${id}`, {
+    await fetchTokenScaduto(`${process.env.REACT_APP_BACKEND_URL}/note/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

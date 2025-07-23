@@ -20,7 +20,7 @@ const Calendario = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        `${process.env._BACKEND_URL}/richieste-appuntamento/eventi`,
+        `${process.env.REACT_APP_BACKEND_URL}/richieste-appuntamento/eventi`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -60,7 +60,7 @@ const Calendario = () => {
 
     try {
       const res = await fetchTokenScaduto(
-        `${process.env._BACKEND_URL}/richieste-appuntamento`,
+        `${process.env.REACT_APP_BACKEND_URL}/richieste-appuntamento`,
         {
           method: "POST",
           headers: {

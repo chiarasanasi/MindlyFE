@@ -22,11 +22,14 @@ const Login = () => {
     const body: any = { ...formData }
 
     try {
-      const res = await fetch(`${process.env._BACKEND_URL}/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      })
+      const res = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      )
 
       if (!res.ok) {
         const errorJson = await res.json()
@@ -57,22 +60,28 @@ const Login = () => {
       let resUtente
 
       if (ruolo === "CLIENTE") {
-        resUtente = await fetch(`${process.env._BACKEND_URL}/cliente/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        resUtente = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/cliente/me`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
 
         if (resUtente.ok) {
           const utente = await resUtente.json()
           localStorage.setItem("utente", JSON.stringify(utente))
         }
       } else if (ruolo === "PSICOLOGO") {
-        resUtente = await fetch(`${process.env._BACKEND_URL}/psicologo/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        resUtente = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/psicologo/me`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
 
         if (resUtente.ok) {
           const utente = await resUtente.json()

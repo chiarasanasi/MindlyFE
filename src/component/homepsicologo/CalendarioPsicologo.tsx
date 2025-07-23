@@ -24,7 +24,7 @@ const CalendarioPsicologo = forwardRef((props, ref) => {
     console.log("PAYLOAD", payload)
     try {
       const res = await fetchTokenScaduto(
-        `${process.env._BACKEND_URL}/richieste-appuntamento/psicologo/eventi`,
+        `${process.env.REACT_APP_BACKEND_URL}/richieste-appuntamento/psicologo/eventi`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
