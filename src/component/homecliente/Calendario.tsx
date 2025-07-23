@@ -48,44 +48,6 @@ const Calendario = () => {
     caricaEventi()
   }, [])
 
-  const [data, setData] = useState("")
-  const [ora, setOra] = useState("")
-  const [messaggio, setMessaggio] = useState("")
-  const [successo, setSuccesso] = useState(false)
-  const [errore, setErrore] = useState(false)
-
-  const inviaRichiesta = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const token = localStorage.getItem("token")
-
-    try {
-      const res = await fetchTokenScaduto(
-        `${import.meta.env.VITE_BACKEND_URL}/richieste-appuntamento`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ data, ora, messaggio }),
-        }
-      )
-
-      if (!res.ok) throw new Error("Errore nella richiesta")
-
-      setSuccesso(true)
-      setErrore(false)
-      setData("")
-      setOra("")
-      setMessaggio("")
-      caricaEventi()
-    } catch (err) {
-      console.error(err)
-      setErrore(true)
-      setSuccesso(false)
-    }
-  }
-
   return (
     <div>
       <div className="my-3">
