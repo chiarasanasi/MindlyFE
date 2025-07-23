@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import NavBarClientePsico from "../../component/NavbarClientePsico"
 import SidebarCliente from "../../component/Sidebar"
-import { Container, Row, Col, Card, Form } from "react-bootstrap"
+import { Container, Row, Col, Card, Form, Spinner } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/Diario.css"
 import { fetchTokenScaduto } from "../../utilities/fetchTokenScaduto"
@@ -116,7 +116,17 @@ const Diario = () => {
     fetchNote()
   }
 
-  if (loading) return <p className="text-center">Caricamento...</p>
+  if (loading) {
+    return (
+      <div
+        className="d-flex flex-column justify-content-center align-items-center"
+        style={{ height: "200px" }}
+      >
+        <Spinner animation="border" variant="success" role="status"></Spinner>
+        <span>Caricamento...</span>
+      </div>
+    )
+  }
   if (!cliente) return null
 
   return (

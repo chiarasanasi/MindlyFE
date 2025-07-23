@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import NavBarClientePsico from "../../component/NavbarClientePsico"
 import SidebarCliente from "../../component/Sidebar"
-import { Col, Container, Row } from "react-bootstrap"
+import { Col, Container, Row, Spinner } from "react-bootstrap"
 import { jwtDecode } from "jwt-decode"
 import "/src/css/Mindly.css"
 import { fetchTokenScaduto } from "../../utilities/fetchTokenScaduto"
@@ -69,7 +69,17 @@ const HomePsicologo = () => {
     fetchClienti()
   }, [navigate])
 
-  if (loading) return <p className="text-center">Caricamento...</p>
+  if (loading) {
+    return (
+      <div
+        className="d-flex flex-column justify-content-center align-items-center"
+        style={{ height: "200px" }}
+      >
+        <Spinner animation="border" variant="success" role="status"></Spinner>
+        <span>Caricamento...</span>
+      </div>
+    )
+  }
 
   return (
     <>

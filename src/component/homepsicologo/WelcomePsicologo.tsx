@@ -1,3 +1,4 @@
+import { Spinner } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/Welcome.css"
 
@@ -10,7 +11,17 @@ interface WelcomePsicologoProps {
 }
 
 const WelcomePsicologo = ({ psicologo }: WelcomePsicologoProps) => {
-  if (!psicologo) return <p className="text-center">Caricamento...</p>
+  if (!psicologo) {
+    return (
+      <div
+        className="d-flex flex-column justify-content-center align-items-center"
+        style={{ height: "200px" }}
+      >
+        <Spinner animation="border" variant="success" role="status"></Spinner>
+        <span>Caricamento...</span>
+      </div>
+    )
+  }
 
   return (
     <>

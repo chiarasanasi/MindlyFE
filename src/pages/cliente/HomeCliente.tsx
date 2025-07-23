@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import NavBarClientePsico from "../../component/NavbarClientePsico"
 import SidebarCliente from "../../component/Sidebar"
 import WelcomeUtente from "../../component/homecliente/WelcomeUtente"
-import { Col, Container, Row } from "react-bootstrap"
+import { Col, Container, Row, Spinner } from "react-bootstrap"
 import MiniDiario from "../../component/homecliente/MiniDiario"
 import Calendario from "../../component/homecliente/Calendario"
 import { Link } from "react-router-dom"
@@ -79,7 +79,17 @@ const HomeCliente = () => {
     fetchCliente(), fetchNote()
   }, [navigate])
 
-  if (loading) return <p className="text-center">Caricamento...</p>
+  if (loading) {
+    return (
+      <div
+        className="d-flex flex-column justify-content-center align-items-center"
+        style={{ height: "200px" }}
+      >
+        <Spinner animation="border" variant="success" role="status"></Spinner>
+        <span>Caricamento...</span>
+      </div>
+    )
+  }
 
   if (!cliente?.psicologo) {
     if (!localStorage.getItem("token")) {
