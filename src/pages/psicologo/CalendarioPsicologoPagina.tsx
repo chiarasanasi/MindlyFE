@@ -16,7 +16,7 @@ const CalendarioPsicologoPagina = () => {
   const fetchPsicologo = async () => {
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/psicologo/me`,
+        `${import.meta.env.VITE_BACKEND_URL}/psicologo/me`,
         {}
       )
       const data = await res.json()
@@ -30,7 +30,7 @@ const CalendarioPsicologoPagina = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/richieste-appuntamento/psicologo`,
+        `${import.meta.env.VITE_BACKEND_URL}/richieste-appuntamento/psicologo`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -59,7 +59,9 @@ const CalendarioPsicologoPagina = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/richieste-appuntamento/${id}/stato?stato=${stato}`,
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/richieste-appuntamento/${id}/stato?stato=${stato}`,
         {
           method: "PUT",
           headers: {

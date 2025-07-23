@@ -23,7 +23,7 @@ const Login = () => {
 
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -61,7 +61,7 @@ const Login = () => {
 
       if (ruolo === "CLIENTE") {
         resUtente = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/cliente/me`,
+          `${import.meta.env.VITE_BACKEND_URL}/cliente/me`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -75,7 +75,7 @@ const Login = () => {
         }
       } else if (ruolo === "PSICOLOGO") {
         resUtente = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/psicologo/me`,
+          `${import.meta.env.VITE_BACKEND_URL}/psicologo/me`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

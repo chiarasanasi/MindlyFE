@@ -16,7 +16,7 @@ const MiniDiario = () => {
 
   const fetchNote = async () => {
     const res = await fetchTokenScaduto(
-      `${process.env.REACT_APP_BACKEND_URL}/note`,
+      `${import.meta.env.VITE_BACKEND_URL}/note`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

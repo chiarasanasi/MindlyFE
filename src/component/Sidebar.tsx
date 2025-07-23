@@ -20,7 +20,7 @@ const SidebarCliente = () => {
   interface DecodedToken {
     username: string
   }
-  const [sidebarVisible, setSidebarVisible] = useState(true)
+  const [sidebarVisible] = useState(true)
 
   const token = localStorage.getItem("token")
   let username = ""

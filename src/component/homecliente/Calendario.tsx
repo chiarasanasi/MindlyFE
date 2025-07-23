@@ -60,7 +60,7 @@ const Calendario = () => {
 
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/richieste-appuntamento`,
+        `${import.meta.env.VITE_BACKEND_URL}/richieste-appuntamento`,
         {
           method: "POST",
           headers: {

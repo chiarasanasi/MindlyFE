@@ -7,7 +7,7 @@ import SidebarCliente from "../Sidebar"
 
 const Psicologo = () => {
   const [psicologo, setPsicologo] = useState<any>(null)
-  const [cliente, setCliente] = useState<any>(null)
+  const [, setCliente] = useState<any>(null)
 
   useEffect(() => {
     const utente = localStorage.getItem("utente")

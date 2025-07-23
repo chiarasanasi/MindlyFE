@@ -38,7 +38,7 @@ const HomePsicologo = () => {
     const fetchPsicologo = async () => {
       try {
         const res = await fetchTokenScaduto(
-          `${process.env.REACT_APP_BACKEND_URL}/psicologo/me`,
+          `${import.meta.env.VITE_BACKEND_URL}/psicologo/me`,
           {}
         )
         const data = await res.json()
@@ -53,7 +53,7 @@ const HomePsicologo = () => {
     const fetchClienti = async () => {
       try {
         const res = await fetchTokenScaduto(
-          `${process.env.REACT_APP_BACKEND_URL}/psicologo/clienti`,
+          `${import.meta.env.VITE_BACKEND_URL}/psicologo/clienti`,
           {}
         )
         if (res.ok) {

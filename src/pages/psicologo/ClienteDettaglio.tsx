@@ -28,7 +28,9 @@ const ClienteDettaglio = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/psicologo/clienti/${usernameCliente}`,
+        `${
+          import.meta.env.VITE_BACKEND_URL
+        }/psicologo/clienti/${usernameCliente}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -50,7 +52,7 @@ const ClienteDettaglio = () => {
   const fetchPsicologo = async () => {
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/psicologo/me`
+        `${import.meta.env.VITE_BACKEND_URL}/psicologo/me`
       )
       const data = await res.json()
       setPsicologo(data)
@@ -62,7 +64,7 @@ const ClienteDettaglio = () => {
   const fetchNotePsicologo = async () => {
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/note-psicologo/${usernameCliente}`,
+        `${import.meta.env.VITE_BACKEND_URL}/note-psicologo/${usernameCliente}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -82,7 +84,7 @@ const ClienteDettaglio = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/utente/${usernameCliente}`,
+        `${import.meta.env.VITE_BACKEND_URL}/utente/${usernameCliente}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -101,7 +103,7 @@ const ClienteDettaglio = () => {
 
   const salvaNota = async () => {
     const res = await fetchTokenScaduto(
-      `${process.env.REACT_APP_BACKEND_URL}/note-psicologo`,
+      `${import.meta.env.VITE_BACKEND_URL}/note-psicologo`,
       {
         method: "POST",
         headers: {
@@ -123,7 +125,7 @@ const ClienteDettaglio = () => {
 
   const eliminaNota = async (id: number) => {
     await fetchTokenScaduto(
-      `${process.env.REACT_APP_BACKEND_URL}/note-psicologo/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/note-psicologo/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -136,7 +138,7 @@ const ClienteDettaglio = () => {
 
   const aggiornaNota = async (id: number) => {
     await fetchTokenScaduto(
-      `${process.env.REACT_APP_BACKEND_URL}/note-psicologo/${id}`,
+      `${import.meta.env.VITE_BACKEND_URL}/note-psicologo/${id}`,
       {
         method: "PUT",
         headers: {

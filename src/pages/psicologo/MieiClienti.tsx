@@ -15,7 +15,7 @@ const MieiClienti = () => {
     const token = localStorage.getItem("token")
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/psicologo/clienti`,
+        `${import.meta.env.VITE_BACKEND_URL}/psicologo/clienti`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -56,7 +56,7 @@ const Diario = () => {
   const fetchNote = async () => {
     try {
       const res = await fetchTokenScaduto(
-        `${process.env.REACT_APP_BACKEND_URL}/note`,
+        `${import.meta.env.VITE_BACKEND_URL}/note`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -74,7 +74,7 @@ const Diario = () => {
 
   const salvaNota = async () => {
     const res = await fetchTokenScaduto(
-      `${process.env.REACT_APP_BACKEND_URL}/note`,
+      `${import.meta.env.VITE_BACKEND_URL}/note`,
       {
         method: "POST",
         headers: {
@@ -92,7 +92,7 @@ const Diario = () => {
   }
 
   const eliminaNota = async (id: number) => {
-    await fetchTokenScaduto(`${process.env.REACT_APP_BACKEND_URL}/note/${id}`, {
+    await fetchTokenScaduto(`${import.meta.env.VITE_BACKEND_URL}/note/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -102,7 +102,7 @@ const Diario = () => {
   }
 
   const aggiornaNota = async (id: number) => {
-    await fetchTokenScaduto(`${process.env.REACT_APP_BACKEND_URL}/note/${id}`, {
+    await fetchTokenScaduto(`${import.meta.env.VITE_BACKEND_URL}/note/${id}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
