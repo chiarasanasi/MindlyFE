@@ -36,11 +36,14 @@ const QuestionarioRegistrazione = () => {
     if (risposte) body.risposteQuestionario = JSON.parse(risposte)
 
     try {
-      const res = await fetch("http://localhost:8080/auth/registrazione", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      })
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/auth/registrazione`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      )
 
       if (!res.ok) {
         const errorJson = await res.json()
