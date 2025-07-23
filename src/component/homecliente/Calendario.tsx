@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useCalendarApp, ScheduleXCalendar } from "@schedule-x/react"
 import { createViewMonthAgenda } from "@schedule-x/calendar"
 import { createEventsServicePlugin } from "@schedule-x/events-service"
