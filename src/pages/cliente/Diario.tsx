@@ -28,7 +28,7 @@ const Diario = () => {
     const fetchCliente = async () => {
       try {
         const res = await fetchTokenScaduto(
-          "http://localhost:8080/cliente/me",
+          `${import.meta.env.VITE_BACKEND_URL}/cliente/me`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
