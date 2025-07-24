@@ -56,7 +56,7 @@ const MiniDiario = () => {
 
       <div className="mini-diario-footer">
         <Link
-          to={`${import.meta.env.VITE_BACKEND_URL}/cliente/${username}/diario`}
+          to={`/cliente/${username}/diario`}
           className="button-green text-decoration-none"
         >
           VAI AL DIARIO
