@@ -1,5 +1,5 @@
 import Container from "react-bootstrap/Container"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import "../css/Mindly.css"
 import "../css/Navbar.css"
