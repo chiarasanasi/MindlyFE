@@ -14,6 +14,7 @@ const Registrazione = () => {
   const [showModal, setShowModal] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
   const [specializzazioni, setSpecializzazioni] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -52,6 +53,7 @@ const Registrazione = () => {
       (formData.ruolo === "PSICOLOGO" && formData.specializzazione.length === 0)
     ) {
       setErrorMessage("Compila tutti i campi obbligatori.")
+      setIsLoading(false)
       return
     }
 
@@ -95,6 +97,8 @@ const Registrazione = () => {
     } catch (err) {
       console.error("Errore:", err)
       setErrorMessage("Errore imprevisto durante la registrazione")
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -270,10 +274,19 @@ const Registrazione = () => {
                     </Form.Group>
                   )}
 
-                  <div className="text-center">
-                    <button className="button-green mt-3" type="submit">
-                      REGISTRATI
-                    </button>
+                  <div className="text-center mt-3">
+                    {isLoading ? (
+                      <div
+                        className="spinner-border text-success"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Attendi...</span>
+                      </div>
+                    ) : (
+                      <button className="button-green" type="submit">
+                        REGISTRATI
+                      </button>
+                    )}
                   </div>
                 </Form>
               </Col>

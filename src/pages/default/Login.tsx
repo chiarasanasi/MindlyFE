@@ -15,9 +15,12 @@ const Login = () => {
   })
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsLoading(true)
+    setErrorMessage(null)
 
     const body: any = { ...formData }
 
@@ -63,9 +66,7 @@ const Login = () => {
         resUtente = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/cliente/me`,
           {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+            headers: { Authorization: `Bearer ${token}` },
           }
         )
 
@@ -73,13 +74,13 @@ const Login = () => {
           const utente = await resUtente.json()
           localStorage.setItem("utente", JSON.stringify(utente))
         }
+
+        navigate(`/cliente/${nomeUtente}/home`)
       } else if (ruolo === "PSICOLOGO") {
         resUtente = await fetch(
           `${import.meta.env.VITE_BACKEND_URL}/psicologo/me`,
           {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+            headers: { Authorization: `Bearer ${token}` },
           }
         )
 
@@ -87,9 +88,15 @@ const Login = () => {
           const utente = await resUtente.json()
           localStorage.setItem("utente", JSON.stringify(utente))
         }
+
+        navigate(`/psicologo/${nomeUtente}/home`)
       }
+
+      console.log("Login avvenuto con successo. Benvenut* " + formData.username)
     } catch (err) {
       console.error("Errore:", err)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -153,9 +160,20 @@ const Login = () => {
                   </Form.Group>
 
                   <div className="text-center">
-                    <button className="button-green mt-3" type="submit">
-                      LOGIN
-                    </button>
+                    {isLoading ? (
+                      <div className="text-center mt-3">
+                        <div
+                          className="spinner-border text-success"
+                          role="status"
+                        >
+                          <span className="visually-hidden">Attendi...</span>
+                        </div>
+                      </div>
+                    ) : (
+                      <button className="button-green mt-3" type="submit">
+                        LOGIN
+                      </button>
+                    )}
                   </div>
                 </Form>
               </Col>

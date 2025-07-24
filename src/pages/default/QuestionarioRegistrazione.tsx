@@ -7,6 +7,7 @@ import NavBarMenu from "../../component/NavBarMenu"
 
 const QuestionarioRegistrazione = () => {
   const navigate = useNavigate()
+  const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     nome: "",
@@ -23,10 +24,12 @@ const QuestionarioRegistrazione = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setErrore("")
+    setIsLoading(true)
 
     const { nome, cognome, email, username, password } = formData
     if (!nome || !cognome || !email || !username || !password) {
       setErrore("Per favore, compila tutti i campi obbligatori.")
+      setIsLoading(false)
       return
     }
 
@@ -56,6 +59,8 @@ const QuestionarioRegistrazione = () => {
     } catch (err) {
       console.error("Errore:", err)
       setErrore("Errore di connessione al server. Riprova.")
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -203,10 +208,21 @@ const QuestionarioRegistrazione = () => {
                         </p>
                       )}
 
-                      <div className="text-center">
-                        <button className="button-green mt-3" type="submit">
-                          REGISTRATI
-                        </button>
+                      <div className="text-center mt-3">
+                        {isLoading ? (
+                          <div
+                            className="spinner-border text-success"
+                            role="status"
+                          >
+                            <span className="visually-hidden">
+                              Caricamento...
+                            </span>
+                          </div>
+                        ) : (
+                          <button className="button-green" type="submit">
+                            REGISTRATI
+                          </button>
+                        )}
                       </div>
                     </Form>
                   </Col>
