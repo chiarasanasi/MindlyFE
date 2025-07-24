@@ -1,13 +1,5 @@
 import { useState, useEffect } from "react"
-import {
-  Row,
-  Col,
-  Form,
-  Modal,
-  Button,
-  Alert,
-  Container,
-} from "react-bootstrap"
+import { Row, Col, Form, Modal, Alert, Container } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import "/src/css/Mindly.css"
 import "/src/css/RegistrazioneLogin.css"
