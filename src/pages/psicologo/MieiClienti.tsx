@@ -43,7 +43,7 @@ const MieiClienti = () => {
       <Container>
         <Row className="justify-content-center">
           <div className="container mt-4">
-            <h2 className="mb-4 text-center h-verde">I tuoi clienti</h2>
+            <h2 className="mb-4 text-center h-verde">I miei clienti</h2>
 
             {clienti.length === 0 ? (
               <p>Nessun cliente assegnato.</p>
