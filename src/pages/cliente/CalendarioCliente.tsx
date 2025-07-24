@@ -58,7 +58,7 @@ const CalendarioCliente = () => {
       }))
 
       // console.log(eventiFormattati)
-      // console.log("Cliente", cliente)
+      console.log("Cliente", cliente)
 
       eventsService.set(eventiFormattati)
     } catch (err) {
