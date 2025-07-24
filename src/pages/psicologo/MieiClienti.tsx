@@ -63,7 +63,6 @@ const MieiClienti = () => {
                           {c.nome} {c.cognome}
                         </h5>
                         <p className="card-text">📧 {c.email}</p>
-                        <p className="card-text">Età: {c.eta}</p>
                       </div>
                     </div>
                   </div>
