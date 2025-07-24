@@ -33,7 +33,7 @@ const NavBarClientePsico = () => {
       <Container>
         <Navbar expand="lg" className="navbar-custom py-3">
           <Container fluid className="m-0 p-0">
-            <Navbar.Brand as={Link} to="/">
+            <Navbar.Brand>
               <img src="/img/Logo_Lungo.svg" alt="Logo" className="logo m-0" />
             </Navbar.Brand>
             <Navbar.Toggle onClick={() => setVisible(!visible)} />
