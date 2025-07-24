@@ -23,7 +23,7 @@ const CalendarioPsicologo = forwardRef((props: any, ref) => {
     if (!token) return
 
     const payload = JSON.parse(atob(token.split(".")[1]))
-    console.log("PAYLOAD", payload)
+    // console.log("PAYLOAD", payload)
     try {
       const res = await fetchTokenScaduto(
         `${
@@ -35,7 +35,7 @@ const CalendarioPsicologo = forwardRef((props: any, ref) => {
           },
         }
       )
-      console.log("RESPONSE", res)
+      // console.log("RESPONSE", res)
       if (!res.ok) throw new Error("Errore nel caricamento eventi")
 
       const data = await res.json()

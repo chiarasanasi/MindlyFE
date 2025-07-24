@@ -51,3 +51,29 @@ Queste funzionalità non sono ancora implementate, ma sono state previste per ve
 **Chiara Sanasi**  
 chiarasanasi.work@gmail.com  
 [LinkedIn](https://www.linkedin.com/in/chiarasanasi/)
+
+---
+
+### Modalità test: accedere come psicologo
+
+Per scopi dimostrativi, è possibile testare anche l’esperienza lato **psicologo**, normalmente riservata solo ai profili professionali. Questo permette di simulare l’interazione completa tra cliente e terapeuta, inclusa la gestione delle richieste di appuntamento.
+
+#### Procedura passo-passo
+
+1. **Accedi come utente** dal form di login.
+2. Vai nella sezione **"Calendario"** e invia una richiesta di appuntamento al tuo psicologo.
+3. Apri la sezione **"Il mio Psicologo"** dal menu laterale.
+4. **Copia nome, cognome ed email** dello psicologo assegnato.
+5. Effettua il **logout**.
+6. Accedi come psicologo, inserendo:
+
+   - **Username:** `nome.cognome` (es. `luca.ferrari`)
+   - **Email:** l’email ottenuta al punto 4 (es. `luca.ferrari@mindly.it`)
+   - **Password:** `password`
+
+   > La password `password` Funziona solo per gli psicologi pre-caricati nel database, con email che termina in `@mindly.it`.
+
+7. Verrai reindirizzato alla **dashboard dello psicologo**.
+8. Accedi alla sezione **"Calendario"** per visualizzare le richieste dei clienti e decidere se **accettarle o rifiutarle**.
+
+> Questa modalità è utile per esplorare tutte le funzionalità dell’app, inclusa la gestione dei clienti dal punto di vista del professionista.

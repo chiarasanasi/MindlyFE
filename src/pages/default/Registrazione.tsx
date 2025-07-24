@@ -89,7 +89,7 @@ const Registrazione = () => {
       }
 
       console.log("Registrazione avvenuta con successo")
-      console.log(formData)
+      // console.log(formData)
       localStorage.clear()
       navigate("/login")
     } catch (err) {

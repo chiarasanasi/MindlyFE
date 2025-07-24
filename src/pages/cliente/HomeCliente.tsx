@@ -53,7 +53,7 @@ const HomeCliente = () => {
         )
         const data = await res.json()
         setCliente(data)
-        console.log("CLIENTE", cliente)
+        // console.log("CLIENTE", cliente)
       } catch (err) {
         console.error("Errore cliente:", err)
       } finally {

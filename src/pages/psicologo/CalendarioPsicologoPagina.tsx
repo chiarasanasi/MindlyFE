@@ -84,7 +84,7 @@ const CalendarioPsicologoPagina = () => {
     (r: RichiestaAppuntamento) => r.stato === "ACCETTATA"
   )
 
-  console.log(richieste)
+  // console.log(richieste)
   return (
     <>
       <NavBarClientePsico />

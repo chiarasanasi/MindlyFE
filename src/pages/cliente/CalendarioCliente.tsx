@@ -57,8 +57,8 @@ const CalendarioCliente = () => {
         description: ev.description || "Nessun messaggio",
       }))
 
-      console.log(eventiFormattati)
-      console.log("Cliente", cliente)
+      // console.log(eventiFormattati)
+      // console.log("Cliente", cliente)
 
       eventsService.set(eventiFormattati)
     } catch (err) {

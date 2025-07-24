@@ -40,7 +40,7 @@ const ClienteDettaglio = () => {
       const data = await res.json()
 
       setCliente(data)
-      console.log(data)
+      // console.log(data)
       if (data.risposteQuestionario) {
         setRisposte(JSON.parse(data.risposteQuestionario))
       }

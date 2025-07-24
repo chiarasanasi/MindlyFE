@@ -39,7 +39,7 @@ const App = () => {
       return () => clearTimeout(timeout)
     }
   }, [mostraModaleScadenza])
-  console.log("mostraModaleScadenza:", mostraModaleScadenza)
+  // console.log("mostraModaleScadenza:", mostraModaleScadenza)
 
   return (
     <>

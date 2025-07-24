@@ -41,7 +41,7 @@ const Login = () => {
       localStorage.setItem("token", token)
 
       const decodedToken = parseJwt(token)
-      console.log("Dati nel token:", decodedToken)
+      // console.log("Dati nel token:", decodedToken)
       const ruoloArray = decodedToken.ruolo
       const ruolo = Array.isArray(ruoloArray) ? ruoloArray[0] : ruoloArray
       localStorage.setItem("ruolo", ruolo)
