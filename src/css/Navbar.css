@@ -5,7 +5,7 @@
 }
 
 .logo {
-  width: 200px;
+  width: 150px;
   margin-bottom: 2rem;
 }
 
@@ -13,8 +13,31 @@
   display: none;
 }
 
+.navbar-toggler {
+  border: 0px !important;
+}
+
+.navbar-toggler-icon {
+  width: 1em !important;
+}
+
+.nav-item-responsive a {
+  text-decoration: none !important;
+  color: darkgrey !important;
+}
+
+.nav-item-responsive button {
+  margin-top: 1em;
+}
+
 @media (max-width: 991.98px) {
   .nav-item-responsive {
     display: block !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .logo {
+    width: 6em;
   }
 }

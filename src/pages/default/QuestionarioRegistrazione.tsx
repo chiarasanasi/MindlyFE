@@ -64,29 +64,29 @@ const QuestionarioRegistrazione = () => {
       <NavBarMenu />
 
       <div className="sfondo">
-        <div className="background-overlay-registrazione">
+        <div className="background-overlay-registrazione -webkit-fill-available">
           <Row className="min-vh-100 flex-column flex-lg-row m-0">
             <Col
               lg={6}
               className="d-flex flex-column justify-content-center align-items-start p-4 order-1 order-lg-1  spazio-dalla-navbar"
             >
-              <h2 className="fw-bold mb-4 h-verde ms-5">
+              <h2 className="fw-bold mb-4 h-verde testo-custom">
                 IL PRIMO COLLOQUIO È GRATUITO !
               </h2>
 
-              <ul className="list-unstyled ms-5">
-                <li className="mb-2">
+              <ul className="list-unstyled">
+                <li className="mb-2 lista-custom">
                   ✅ Scegli tu <strong>quando prenotare</strong>
                 </li>
-                <li className="mb-2">
+                <li className="mb-2 lista-custom">
                   ✅ Dopo il colloquio: a partire da <strong>49 €</strong>
                 </li>
-                <li className="mb-2">
+                <li className="mb-2 lista-custom">
                   ✅ Oppure <strong>cambia terapeuta</strong> gratis
                 </li>
               </ul>
 
-              <p className="mt-4 ms-5">
+              <p className="mt-4 nota-custom">
                 Non è un abbonamento: <strong>smetti quando vuoi.</strong>
               </p>
             </Col>

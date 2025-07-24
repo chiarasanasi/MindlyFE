@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Col, Form, Row } from "react-bootstrap"
+import { Col, Container, Form, Row } from "react-bootstrap"
 import "/src/css/Mindly.css"
 import "/src/css/Domande.css"
 import { useNavigate } from "react-router-dom"
@@ -153,9 +153,9 @@ function Domande() {
   }
 
   return (
-    <div className="container spazio-dalla-navbar">
-      <Row className="justify-content-center">
-        <Col lg={6} className="mt-lg-5 pt-lg-5">
+    <Container className="d-flex justify-content-center align-items-center min-vh-100">
+      <Row className="w-100">
+        <Col lg={6} className="mx-auto">
           {renderDomanda()}
           {errore && (
             <p className="text-danger text-center mt-3" role="alert">
@@ -169,7 +169,7 @@ function Domande() {
           </div>
         </Col>
       </Row>
-    </div>
+    </Container>
   )
 }
 

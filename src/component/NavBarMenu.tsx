@@ -12,7 +12,7 @@ const NavBarMenu = () => {
       <Navbar expand="lg" fixed="top" className="navbar-custom py-3">
         <Container>
           <Navbar.Brand>
-            <Link to="/">
+            <Link to="/" className="logo-mindly">
               <img src="/img/Logo_Lungo.svg" alt="Logo" className="logo m-0" />
             </Link>
           </Navbar.Brand>

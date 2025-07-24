@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react"
-import { Row, Col, Form, Modal, Button, Alert } from "react-bootstrap"
+import {
+  Row,
+  Col,
+  Form,
+  Modal,
+  Button,
+  Alert,
+  Container,
+} from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import "/src/css/Mindly.css"
 import "/src/css/RegistrazioneLogin.css"
@@ -124,7 +132,7 @@ const Registrazione = () => {
         <div className="background-overlay">
           <NavBarMenu />
 
-          <div className="container py-5 spazio-dalla-navbar">
+          <Container className=" py-5 spazio-dalla-navbar">
             <Row className="justify-content-center">
               <Col lg={6}>
                 <h3 className="text-center h-verde fw-semibold mb-4">
@@ -278,11 +286,12 @@ const Registrazione = () => {
                 </Form>
               </Col>
             </Row>
-          </div>
+          </Container>
         </div>
       </div>
 
       <Modal
+        className="d-flex align-items-center"
         show={showModal}
         onHide={() => {
           setShowModal(false)
@@ -297,15 +306,15 @@ const Registrazione = () => {
           questionario. Verrai reindirizzato automaticamente.
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="secondary"
+          <button
+            className="button-green"
             onClick={() => {
               setShowModal(false)
               navigate("/questionario")
             }}
           >
-            Ok
-          </Button>
+            OK
+          </button>
         </Modal.Footer>
       </Modal>
     </>

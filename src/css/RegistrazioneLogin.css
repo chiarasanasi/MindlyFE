@@ -19,7 +19,7 @@
 }
 
 .background-overlay-registrazione {
-  position: absolute;
+  position: relative;
   z-index: 1;
   background: none;
 }
@@ -57,4 +57,31 @@
 .form-control.is-invalid {
   border-color: #dc3545 !important;
   box-shadow: none;
+}
+
+.testo-custom {
+  text-align: left;
+  margin-left: 3rem;
+}
+
+.lista-custom {
+  text-align: left;
+  margin-left: 3em;
+}
+
+.nota-custom {
+  text-align: center;
+  margin-left: 3em;
+}
+
+@media (max-width: 425px) {
+  .testo-custom {
+    text-align: center;
+    margin-left: 0rem;
+  }
+
+  .nota-custom {
+    text-align: center;
+    margin-left: 0em;
+  }
 }

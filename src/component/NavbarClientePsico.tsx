@@ -1,18 +1,10 @@
 import Container from "react-bootstrap/Container"
 import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import {
-  CCollapse,
-  CContainer,
-  CNavbar,
-  CNavbarBrand,
-  CNavbarNav,
-  CNavbarToggler,
-  CNavItem,
-  CNavLink,
-} from "@coreui/react"
 import "../css/Mindly.css"
 import "../css/Navbar.css"
+import { Nav, Navbar, NavItem } from "react-bootstrap"
+import { NavLink } from "react-router-dom"
 
 const NavBarClientePsico = () => {
   const navigate = useNavigate()
@@ -39,61 +31,67 @@ const NavBarClientePsico = () => {
   return (
     <>
       <Container>
-        <CNavbar expand="lg" className="navbar-custom py-3">
-          <CContainer fluid className="m-0 p-0">
-            <CNavbarBrand as={Link} to="/">
+        <Navbar expand="lg" className="navbar-custom py-3">
+          <Container fluid className="m-0 p-0">
+            <Navbar.Brand as={Link} to="/">
               <img src="/img/Logo_Lungo.svg" alt="Logo" className="logo m-0" />
-            </CNavbarBrand>
-            <CNavbarToggler onClick={() => setVisible(!visible)} />
-            <CCollapse className="navbar-collapse" visible={visible}>
-              <CNavbarNav className="me-auto align-items-center">
+            </Navbar.Brand>
+            <Navbar.Toggle onClick={() => setVisible(!visible)} />
+            <Navbar.Collapse className="navbar-collapse">
+              <Nav className="me-auto align-items-center">
                 {ruolo === "CLIENTE" && (
                   <>
-                    <CNavItem className="nav-item-responsive">
-                      <CNavLink href={`/cliente/${username}/home`}>
+                    <NavItem className="nav-item-responsive">
+                      <NavLink to={`/cliente/${username}/home`}>
                         Profilo
-                      </CNavLink>
-                    </CNavItem>
-                    <CNavItem className="nav-item-responsive">
-                      <CNavLink href={`/cliente/${username}/diario`}>
+                      </NavLink>
+                    </NavItem>
+                    <NavItem className="nav-item-responsive">
+                      <NavLink to={`/cliente/${username}/diario`}>
                         Il mio Diario
-                      </CNavLink>
-                    </CNavItem>
-                    <CNavItem className="nav-item-responsive">
-                      <CNavLink href={`/cliente/${username}/calendario`}>
+                      </NavLink>
+                    </NavItem>
+                    <NavItem className="nav-item-responsive">
+                      <NavLink to={`/cliente/${username}/calendario`}>
                         Calendario
-                      </CNavLink>
-                    </CNavItem>
-                    <CNavItem className="nav-item-responsive">
-                      <CNavLink href={`/cliente/${username}/psicologo`}>
+                      </NavLink>
+                    </NavItem>
+                    <NavItem className="nav-item-responsive">
+                      <NavLink to={`/cliente/${username}/psicologo`}>
                         Il mio Psicologo
-                      </CNavLink>
-                    </CNavItem>
+                      </NavLink>
+                    </NavItem>
                   </>
                 )}
                 {ruolo === "PSICOLOGO" && (
                   <>
-                    <CNavItem className="nav-item-responsive">
-                      <CNavLink href="#">Profilo</CNavLink>
-                    </CNavItem>
-                    <CNavItem className="nav-item-responsive">
-                      <CNavLink href="#">I miei Clienti</CNavLink>
-                    </CNavItem>
-                    <CNavItem className="nav-item-responsive">
-                      <CNavLink href="#">Calendario</CNavLink>
-                    </CNavItem>
+                    <NavItem className="nav-item-responsive">
+                      <NavLink to={`/psicologo/${username}/home`}>
+                        Profilo
+                      </NavLink>
+                    </NavItem>
+                    <NavItem className="nav-item-responsive">
+                      <NavLink to={`/psicologo/${username}/clienti`}>
+                        I miei Clienti
+                      </NavLink>
+                    </NavItem>
+                    <NavItem className="nav-item-responsive">
+                      <NavLink to={`/psicologo/${username}/calendario`}>
+                        Calendario
+                      </NavLink>
+                    </NavItem>
                   </>
                 )}
 
                 {visible && (
-                  <CNavItem className="nav-item-responsive text-center">
+                  <NavItem className="nav-item-responsive text-center">
                     <button className="button-green" onClick={handleLogout}>
                       LOGOUT
                     </button>
-                  </CNavItem>
+                  </NavItem>
                 )}
-              </CNavbarNav>
-            </CCollapse>
+              </Nav>
+            </Navbar.Collapse>
             {isDesktop && (
               <div className="ms-auto d-flex align-items-center">
                 <button className="button-green" onClick={handleLogout}>
@@ -101,8 +99,8 @@ const NavBarClientePsico = () => {
                 </button>
               </div>
             )}
-          </CContainer>
-        </CNavbar>
+          </Container>
+        </Navbar>
       </Container>
     </>
   )
