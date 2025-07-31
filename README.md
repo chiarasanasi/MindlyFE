@@ -31,12 +31,6 @@ Gli psicologi, invece, hanno accesso a un’area riservata in cui possono:
 - Vite
 - AuthContext per la gestione del token JWT e la modale globale
 
-## Deploy
-
-- Vercel
-- GitHub per il versionamento del codice
-- Collegamento al backend hostato su Koyeb
-
 ## Funzionalità in sviluppo
 
 Queste funzionalità non sono ancora implementate, ma sono state previste per versioni future:
