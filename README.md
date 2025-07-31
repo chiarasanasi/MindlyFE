@@ -71,3 +71,30 @@ Per scopi dimostrativi, è possibile testare anche l’esperienza lato **psicolo
 8. Accedi alla sezione **"Calendario"** per visualizzare le richieste dei clienti e decidere se **accettarle o rifiutarle**.
 
 > Questa modalità è utile per esplorare tutte le funzionalità dell’app, inclusa la gestione dei clienti dal punto di vista del professionista.
+
+---
+
+## Come eseguire il progetto in locale
+
+1.  Prerequisiti
+    Assicurati di avere installato:
+
+- **Java 17+** (per il backend Spring Boot) → [Download Java](https://adoptium.net/)
+- **Maven** (se non incluso in IntelliJ/Eclipse) → [Installazione Maven](https://maven.apache.org/install.html)
+- **Node.js 18+** e **npm** (per il frontend React) → [Download Node.js](https://nodejs.org/)
+- **Git** → [Download Git](https://git-scm.com/)
+- **Database PostgreSQL** installato e avviato
+
+2. **Clonare il repository**
+
+````bash
+git clone https://github.com/chiarasanasi/MindlyFE.git
+cd MindlyFE
+
+3. Clonare e avviare il backend prima di proseguire
+
+4. **Apri il terminale**
+```bash
+cd **path di MindlyFE**
+npm run dev
+````
